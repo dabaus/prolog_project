@@ -96,3 +96,9 @@ makeNounCollective(Noun, Collective) :-
         assert(collection(Noun, Collective)),
         assert(collective(Noun)).
 
+makeAdjective(Adjective) :-
+        assert(adjective(Adjective)).
+
+makePossessiveAdjective(PossessiveAdjective) :-
+        assert(possessiveAdjective(PossessiveAdjective)),
+        assert(adjective(PossessiveAdjective)).
