@@ -90,4 +90,29 @@ isConjVerbTrans(Cverb) :- transitive(Verb), matchVerb(Verb, Cverb).
 isConjVerbDitrans(Cverb) :- ditransitive(Verb), matchVerb(Verb, Cverb).
 
 
+/* -- NOUN -- */
+
+% SAMPLES
+makeNoun(Noun, Pro, Com, Con, Abs) :-
+        assert(noun(Noun)),
+        (Pro == true -> assert(proper(Name)); true),
+        (Com == true -> assert(common(Name)); true),
+        (Con == true -> assert(concrete(Name)); true),
+        (Abs == true -> assert(abstract(Name)); true).
+        
+makeNounPlural(Noun, Plural) :-
+        assert(plural(Noun, Plural)),
+        assert(countable(Noun)).
+
+makeNounCollective(Noun, Collective) :-
+        assert(collection(Noun, Collective)),
+        assert(collective(Noun)).
+
+
+makeAdjective(Adjective) :-
+        assert(adjective(Adjective)).
+
+makePossessiveAdjective(PossessiveAdjective) :-
+        assert(possessiveAdjective(PossessiveAdjective)),
+        assert(adjective(PossessiveAdjective)).
 
