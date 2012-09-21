@@ -1,0 +1,2 @@
+honk(toni).
+honk(bassam).
