@@ -21,8 +21,9 @@ function Sicstus() {
 					var stringPos = outBuffer.indexOf('\n');
 					var line = outBuffer.substring(0, stringPos);
 					outBuffer = outBuffer.substring(stringPos+1, outBuffer.length);
-					
-					console.log(line);
+					for (var i = 0; i < outputListeners.length; i++) {
+						outputListeners[i](line);
+					}
 				} else {
 					foundNewline = false;
 				}
@@ -31,7 +32,7 @@ function Sicstus() {
 			if (outBuffer === '| ?- ') {
 				if (pendingCommands.length > 0) {
 					var nextCommand = pendingCommands.pop();
-					nextCommand.fun();
+					nextCommand.func();
 				}
 			}
 		}
@@ -47,14 +48,14 @@ function Sicstus() {
 		});
 	};
 	function consult(file, callback) {
-		this.state('consult', ["'"+file+"'"], function(data){
+		state('consult', ["'"+file+"'"], function(data){
 			callback(data);
 		});
 	};
 	function state(pred, args, callback) {
 		var msg = pred + '(' + args.join(',') + ').';
 		pendingCommands.unshift({
-			fun: function(){
+			func: function(){
 				write(msg);
 			},
 			resp: function(data) {
@@ -69,7 +70,6 @@ function Sicstus() {
 		console.log('--> ' + data);
 		process.stdin.write(data + '\n');
 	};
-
 	return {
 		init: init,
 		consult: consult,
@@ -84,12 +84,6 @@ prol.init();
 prol.consult('test.pl');
 prol.state('honk', ['donkey']);
 prol.state('honk', ['toni']);
-/*
-
-
-*/
-				/*if (! emptyLine.test(output)) {
-					for (var i = 0; i < listeners.length; i++) {
-			  			listeners[i](true, output);
-			  		}
-		  		}*/
+prol.listen(function(line){
+	console.log(line);
+});
