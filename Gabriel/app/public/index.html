@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<script type="text/javascript" src="/js/jquery.min.js"></script>
-		<script type="text/javascript" src="/js/socket.io.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript" src="/js/comms.js"></script>
 
 		<style type="text/css">
@@ -40,10 +40,13 @@
 				padding: 4px;
 			}
 			#console, #pretty {
+				position: relative;
+				display: inline-block;
 				width: 400px;
 				height: 400px;
 				box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.3);
-				display: inline-block;
+				vertical-align: top;
+				padding-top: 36px;
 			}
 			#input {
 				width: 804px;
@@ -56,12 +59,17 @@
 				padding-left: 4px;
 			}
 			h2 {
+				position: absolute;
+				top: 0;
+				left: 0;
 				font-family: Futura, Helvetica, Arial, sans-serif;
 				font-weight: normal;
 				font-size: 17px;
 				padding: 8px 10px 6px 10px;
 				box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
 				background: rgba(0,0,0,0.02);
+				width: 380px;
+
 			}
 			#input input {
 				height: 27px;
@@ -107,6 +115,11 @@
 			#input input[type='text'] {
 				width: 460px;
 			}
+			.console-entry {
+				margin: 5px;
+				font-family: Menlo, Consolas, monospace;
+				font-size: 12px;
+			}
 		</style>
 	</head>
 
@@ -114,16 +127,16 @@
 		<div id="container">
 			<h1>Protalk</h1>
 			<div id="output">
-				<div id="console">
+				<div id="pretty">
 					<h2>Conversation</h2>
 				</div>
-				<div id="pretty">
+				<div id="console">
 					<h2>Console input/output</h2>
 				</div>
 			</div>
 			<div id="input">
 				<input type="text" id="write" placeholder="write here">
-				<input type="button" value="submit" class="submit">
+				<input type="button" id="submit" value="submit" class="submit">
 				<input type="button" id='radioConsole' value="to console" class="option" onclick="toggleInput();">
 				<input type="button" id='radioChat' value="as conversation" class="option" onclick="toggleInput();">
 			</div>
