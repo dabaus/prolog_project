@@ -12,13 +12,13 @@ function Sicstus() {
 	var outputListeners = [], // List of console listeners.
 		pendingCommands = []; // Commands pending to be written to console.
 
-	var process = null, // Active process.
-		nextCmd = null; // Active command.
+	var process = null, // Active processtus.exe
+			nextCmd = null; // Active command.
 
 	var outBuffer = ""; // Buffered output to be yet written.
 		
 	var queryModes = ['state', 'queryOne', 'queryAll'],	
-		valueLine = new RegExp(/(\w)+\s\=\s(\w*)\s+\?/), // RegExp to match a query
+		valueLine = new RegExp(/(\w+)\s\=\s(\w*)\s+\?/), // RegExp to match a query
 		valueLineEnd = new RegExp(/\?\s+/);	// RegExp to match the end of a query
 
 	/* Create process, listen to output and forward to relevant functions */
@@ -28,7 +28,6 @@ function Sicstus() {
 		// Standard err is the standard out for Sicstus in windows
 		process.stderr.on('data', function (buffer) {
 			outBuffer += buffer.toString();
-			console.log('Buffer:' + outBuffer);
 			evalBuffer();
 		});
 
@@ -36,7 +35,6 @@ function Sicstus() {
 		// meant to
 		process.stdout.on('data', function (buffer) {
 			outBuffer += buffer.toString();
-			console.log('Buffer:' + outBuffer);
 			evalBuffer();
 		});
 	}
@@ -130,7 +128,7 @@ function Sicstus() {
 			}
 
 			var query = pred + '(' + args.join(',') + ').'; // Create query
-			console.log('Sicstus:' + query);
+			
 			// Prepend to pending commands list.
 			pendingCommands.unshift({
 				mesg: query,

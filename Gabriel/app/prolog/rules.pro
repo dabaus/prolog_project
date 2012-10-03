@@ -54,17 +54,17 @@ isVerbPast(Past) :-
 % PERSON
 isVerbFirstPerson(FP) :-
         verb(_, Conjugations),
-        member(Index, [1, 4]),
+        member(Index, [1, 4, 7, 10]),
         arg(Index, Conjugations, FP).
 
 isVerbSecondPerson(SP) :-
         verb(_, Conjugations),
-        member(Index, [2, 5]),
+        member(Index, [2, 5, 8, 11]),
         arg(Index, Conjugations, SP).
 
 isVerbThirdPerson(TP) :-
         verb(_, Conjugations),
-        member(Index, [3, 6]),
+        member(Index, [3, 6, 9, 12]),
         arg(Index, Conjugations, TP).
 
 % CONJUGATION TO VERB

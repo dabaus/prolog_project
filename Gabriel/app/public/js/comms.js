@@ -23,10 +23,14 @@ function toggleInput() {
 
 function submitContent() {
 	var input = $inputText.val();
-	console.log('Sending: ' + input);
 	if (input.length > 0) {
 		socket.emit(inputDest, {line:input});
 		$inputText.val('');
+	}
+
+	if (inputDest === 'chat') {
+		var entry = '<div class="chat-entry local">' + input + '<div>';
+		$divChat.append(entry);
 	}
 }
 
@@ -45,6 +49,11 @@ window.addEventListener('load', function(){
 	socket.on('console', function(data){
 		var entry = '<div class="console-entry">' + data.line + '<div>';
 		$divConsole.append(entry);
+	});
+
+	socket.on('chat', function(data){
+		var entry = '<div class="chat-entry rem">' + data.line + '<div>';
+		$divChat.append(entry);
 	});
 
 	$inputText.on('keyup', function(e){
