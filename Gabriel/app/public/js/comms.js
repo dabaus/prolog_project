@@ -29,6 +29,7 @@ function submitContent() {
 	}
 
 	if (inputDest === 'chat') {
+		console.log('bob');
 		var entry = '<div class="chat-entry local">' + input + '<div>';
 		$divChat.append(entry);
 	}
@@ -51,7 +52,8 @@ window.addEventListener('load', function(){
 		$divConsole.append(entry);
 	});
 
-	socket.on('chat', function(data){
+	socket.on('chat', function(data) {
+		console.log(data);
 		if (typeof data.RESP !== 'undefined') {
 			if (data.RESP.length > 0) {
 				var entry = '<div class="chat-entry rem">' + data.RESP[0] + '<div>';
