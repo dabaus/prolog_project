@@ -8,6 +8,8 @@ var sicstus = require('./sicstus'),
 app.use(express.compress()); 					// Compress response for speed
 app.use(express.static(__dirname + '/public'));	// Static/public files directory
 
+io.set('log level', 1);
+
 io.sockets.on('connection', function(socket){
 	inst = sicstus.instance();
 
