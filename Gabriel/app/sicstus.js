@@ -18,7 +18,7 @@ function Sicstus() {
 	var outBuffer = ""; // Buffered output to be yet written.
 		
 	var queryModes = ['state', 'queryOne', 'queryAll'],	
-		valueLine = new RegExp(/(\w+)\s\=\s(\w*)\s+\?/), // RegExp to match a query
+		valueLine = new RegExp(/(\w+)\s\=\s(.*)\s+\?/), // RegExp to match a query
 		valueLineEnd = new RegExp(/\?\s+/);	// RegExp to match the end of a query
 
 	/* Create process, listen to output and forward to relevant functions */
