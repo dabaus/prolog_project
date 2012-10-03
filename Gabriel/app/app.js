@@ -27,10 +27,12 @@ io.sockets.on('connection', function(socket){
 		console.log('Wrinting raw: ' + data.line);
 		inst.write(data.line);
 	});
+	
+	inst.consult("prolog/app.pl")
 
 	socket.on('chat', function(data) {
 		console.log('Querying sentence: ' + data.line);
-		inst.queryOne('sentence', [data.line, 'RESP'], function(err, resp){
+		inst.queryOne('sentence', ['"'+data.line+'"', 'RESP'], function(err, resp){
 			if (err !== null) {
 				socket.emit('chat', resp);	
 			} else {
