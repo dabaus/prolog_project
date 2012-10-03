@@ -33,7 +33,6 @@ io.sockets.on('connection', function(socket){
 			if (err !== null) {
 				console.log('Error: ' + err);
 			} else {
-				console.log('Response:' + resp);
 				socket.emit('chat', resp);	
 			}
 		});

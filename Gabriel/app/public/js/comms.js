@@ -38,7 +38,7 @@ window.addEventListener('load', function(){
 	$radioConsole = $('#radioConsole');
 	$radioChat = $('#radioChat');
 	$divConsole = $('#console');
-	$divChat = $('#chat');
+	$divChat = $('#pretty');
 	$inputText = $('#write');
 	$inputSubmit = $('#submit');
 
@@ -52,8 +52,13 @@ window.addEventListener('load', function(){
 	});
 
 	socket.on('chat', function(data){
-		var entry = '<div class="chat-entry rem">' + data.line + '<div>';
-		$divChat.append(entry);
+		if (typeof data.RESP !== 'undefined') {
+			if (data.RESP.length > 0) {
+				var entry = '<div class="chat-entry rem">' + data.RESP[0] + '<div>';
+				$divChat.append(entry);
+				
+			}
+		}
 	});
 
 	$inputText.on('keyup', function(e){
