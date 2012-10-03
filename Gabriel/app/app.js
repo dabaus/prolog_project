@@ -13,35 +13,31 @@ io.sockets.on('connection', function(socket){
 
 	inst.listen(function(consoleOutput){
 		socket.emit('console', {line: consoleOutput});
-		console.log(consoleOutput);
 	});
 
 	inst.init();
 
 	socket.on('disconnect', function(){
-		console.log('Killing sicstus');
 		inst.kill();
 	});
 
 	socket.on('console', function(data) {
-		console.log('Wrinting raw: ' + data.line);
 		inst.write(data.line);
 	});
 	
-	inst.consult("prolog/app.pl")
+	//inst.consult("prolog/app.pl");
+	inst.consult("prolog/test.pl");
 
 	socket.on('chat', function(data) {
-		console.log('Querying sentence: ' + data.line);
-		inst.queryOne('sentence', ['"'+data.line+'"', 'RESP'], function(err, resp){
+		inst.queryOne('sentence', [data.line, 'RESP'], function(err, resp){
 			if (err !== null) {
-				socket.emit('chat', resp);	
-			} else {
 				console.log('Error: ' + err);
+			} else {
+				console.log('Response:' + resp);
+				socket.emit('chat', resp);	
 			}
 		});
 	})
-	
-
 });
 
 server.listen(8082);
