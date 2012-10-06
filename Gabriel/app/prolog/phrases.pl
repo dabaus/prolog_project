@@ -6,6 +6,9 @@ operation(Sentence) --> select_phrase(Sentence).
 
 select_phrase(greeting) --> ([hi]; [hello]; [hai]; [hey]). 
 select_phrase(introduction) --> ([nice, to, meet, you]).
+select_phrase(none) --> ([nice, to, meet]).
+select_phrase(none) --> ([nice, to]).
+select_phrase(none) --> ([nice]).
 select_phrase(none) --> [_].
 
 greeting(_, Out) :-

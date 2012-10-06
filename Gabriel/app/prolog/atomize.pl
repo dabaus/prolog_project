@@ -11,6 +11,14 @@ atomize(X, Out) :-
 %Return result
 atomize([], [], WA, Out) :-
         reverse(WA, Out).
+
+
+%Last character is question mark.
+atomize([X], [], WA, Out) :-
+        is_question(X),
+        atom_codes(W, [X]),
+        atomize([], [], [W|WA], Out).
+
 %Eat extra characters
 atomize([X|Xt], [], WA, Out) :-
         should_skip(X),
@@ -19,21 +27,21 @@ atomize([X|Xt], [], WA, Out) :-
 atomize([], IA, WA, Out) :-
         reverse(IA, T),
         atom_codes(W, T),
-        atomize([], [], [W|WA], Out).
-%Word found
+        atomize([], [], [W|WA], Out).  
+%Word founds
 atomize([X|Xt], IA, WA, Out) :-
         should_skip(X),
         reverse(IA, T),
         atom_codes(W, T),
-        atomize(Xt, [], [W|WA], Out).
+        atomize([X|Xt], [], [W|WA], Out).
 %Eat characters
 atomize([X|Xt], IA, WA, Out) :-
         atomize(Xt, [X|IA], WA, Out).
 
 should_skip(X) :-
-        is_space(X);
-        is_dot(X);
-        is_question(X).
+       is_space(X);
+       is_dot(X);
+       is_question(X).
 
 is_space(X) :-
         X is 32.
