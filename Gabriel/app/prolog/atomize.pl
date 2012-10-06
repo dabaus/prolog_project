@@ -12,14 +12,12 @@ atomize(X, Out) :-
 atomize([], [], WA, Out) :-
         reverse(WA, Out).
 
-
 %Last character is question mark.
 atomize([X], [], WA, Out) :-
         is_question(X),
         atom_codes(W, [X]),
         atomize([], [], [W|WA], Out).
-
-%Eat extra characters
+%Skipp extra characters
 atomize([X|Xt], [], WA, Out) :-
         should_skip(X),
         atomize(Xt, [], WA, Out).
@@ -28,13 +26,13 @@ atomize([], IA, WA, Out) :-
         reverse(IA, T),
         atom_codes(W, T),
         atomize([], [], [W|WA], Out).  
-%Word founds
+%Word found
 atomize([X|Xt], IA, WA, Out) :-
         should_skip(X),
         reverse(IA, T),
         atom_codes(W, T),
         atomize([X|Xt], [], [W|WA], Out).
-%Eat characters
+%Append characters to word
 atomize([X|Xt], IA, WA, Out) :-
         atomize(Xt, [X|IA], WA, Out).
 
