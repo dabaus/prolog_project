@@ -27,7 +27,7 @@ io.sockets.on('connection', function(socket){
 		inst.write(data.line);
 	});
 	
-	inst.consult("prolog/app.pl");
+	inst.consult("prolog/main.pl");
 	//inst.consult("prolog/test.pl");
 
 	socket.on('chat', function(data) {
