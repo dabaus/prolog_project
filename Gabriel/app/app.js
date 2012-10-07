@@ -8,6 +8,8 @@ var sicstus = require('./sicstus'),
 app.use(express.compress()); 					// Compress response for speed
 app.use(express.static(__dirname + '/public'));	// Static/public files directory
 
+io.set('log level', 1);
+
 io.sockets.on('connection', function(socket){
 	inst = sicstus.instance();
 
@@ -25,11 +27,11 @@ io.sockets.on('connection', function(socket){
 		inst.write(data.line);
 	});
 	
-	//inst.consult("prolog/app.pl");
-	inst.consult("prolog/test.pl");
+	inst.consult("prolog/main.pl");
+	//inst.consult("prolog/test.pl");
 
 	socket.on('chat', function(data) {
-		inst.queryOne('sentence', [data.line, 'RESP'], function(err, resp){
+		inst.queryOne('sentence', ['"' + data.line + '"', 'RESP'], function(err, resp){
 			if (err !== null) {
 				console.log('Error: ' + err);
 			} else {

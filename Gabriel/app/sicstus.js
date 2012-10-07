@@ -18,7 +18,7 @@ function Sicstus() {
 	var outBuffer = ""; // Buffered output to be yet written.
 		
 	var queryModes = ['state', 'queryOne', 'queryAll'],	
-		valueLine = new RegExp(/(\w+)\s\=\s(\w*)\s+\?/), // RegExp to match a query
+		valueLine = new RegExp(/(\w+)\s\=\s(.*)\s+\?/), // RegExp to match a query
 		valueLineEnd = new RegExp(/\?\s+/);	// RegExp to match the end of a query
 
 	/* Create process, listen to output and forward to relevant functions */
@@ -134,7 +134,7 @@ function Sicstus() {
 				mesg: query,
 				done: false,
 				resp: function(data) {
-					if (data === 'yes\r') { // Response line is 'yes'
+					if (data === 'yes\r' || data === 'yes') { // Response line is 'yes'
 						if (typeof callback !== 'undefined') {
 							if (mode === 'state') {
 								callback(null, true);
@@ -143,7 +143,7 @@ function Sicstus() {
 							}
 						}
 						this.done == true;
-					} else if (data === 'no\r') { // Response line is 'no'
+					} else if (data === 'no\r' || data == 'no') { // Response line is 'no'
 						if (typeof callback !== 'undefined') {
 							if (mode === 'state') {
 								callback(null, false);
