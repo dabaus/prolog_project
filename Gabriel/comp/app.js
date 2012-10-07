@@ -1,4 +1,7 @@
-var sicstus = require('./sicstus');
+var sicstus = require('./sicstus'),
+	sources = require('./data');
+
+sources.generateData();
 
 var inst = sicstus.instance();
 

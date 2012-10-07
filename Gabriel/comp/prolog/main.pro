@@ -1,6 +1,9 @@
 :- include('processing/atomize.pro').
 :- include('processing/evaluate.pro').
-:- include('grammar/statementGrammar.pro').
+:- include('data/data.pro').
+:- include('grammar/wordAssociations.pro').
+:- include('grammar/grammarStatements.pro').
+:- include('grammar/grammarQuestions.pro').
 
 sentence(Input, Resp) :-
 	atomize(Input, Tokens),
