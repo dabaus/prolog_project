@@ -1,7 +1,5 @@
 :- include('atomize.pl').
 
-
-
 statement((s, [NP,VP])) --> noun_phrase(NP), verb_phrase(VP).
 noun_phrase((np, (det, [D]), (n, [N]))) --> determiner(D), noun(N).
 noun_phrase((np, [(p,[P]),(n, [N])])) --> particle(P), noun(N).
@@ -47,18 +45,18 @@ main :-
         phrase(statement(Out), Atoms),
         write(Out).
  
-%findEl(El, Tree, Out) :-
-%        findEl(El, [Tree], Out).
+findElement(El, Tree, Out) :-
+        findEl(El, [Tree], Out).
         
 %Element found
-%findEl(El, [(El, L)|_], Out) :-
-%        Out = L.
+findEl(El, [(El, L)|_], Out) :-
+        Out = L.
 
-%findEl(_, [], _) :-
-%        fail.
+findEl(_, [], _) :-
+        fail.
 
 %Depth first recursion
-%findEl(El, [(_, L)|Rest], Out) :-
-%        findEl(El, L, Out),
-%        findEl(El, Rest, Out).
+findEl(El, [(_, L)|Rest], Out) :-
+        findEl(El, L, Out),
+        findEl(El, Rest, Out).
         
