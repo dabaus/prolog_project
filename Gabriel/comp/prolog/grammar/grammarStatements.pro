@@ -1,13 +1,19 @@
-statement(s(Np, Vp)) :- noun_phrase(Np), verb_phrase(Vp).
-statement(s(Intj)) :- [Intj], interjection(Intj).
+statement(N, V) --> noun_phrase(N), verb_phrase(V).
+statement(I) --> interjection(I).
 
-noun_phrase(np(Det, Nou)) :- determiner(Det), noun(Nou).
-noun_phrase(np(Det, Adj)) :- determiner(Det), adjective(Adj).
-noun_phrase(np(Det, Adj, Nou)) :- determiner(Det), adjective(Adj), noun(Nou).
-noun_phrase(np(Pron)) :- pronoun(Pron).
+noun_phrase(D, N) --> determiner(D), noun(N).
+noun_phrase(D, A) --> determiner(D), adjective(A).
+noun_phrase(D, A, N) --> determiner(D), adjective(A), noun(N).
+noun_phrase(P) --> pronoun(P).
 
-verb_phrase(vp(Verb, Np)) :- transitive_verb(Verb), noun_phrase(Np).
-verb_phrase(vp(Verb, Adj)) :- transitive_verb(Verb), adjective(Adj).
-verb_phrase(vp(Verb)) :- intransitive_verb(Verb).
+verb_phrase(V, N) --> transitive_verb(V), noun_phrase(N).
+verb_phrase(V, A) --> transitive_verb(V), adjective(A).
+verb_phrase(V) --> intransitive_verb(V).
 
-
+interjection(I) --> [I], {interjection(I)}.
+determiner(D) --> [D], {determiner(D)}.
+noun(N) --> [N], {noun(N)}.
+adjective(A) --> [A], {adjective(A)}.
+pronoun(P) --> [P], {pronoun(P)}.
+transitive_verb(V) --> [V], {transitive_verb(V)}.
+intransitive_verb(V) --> [V], {intransitive_verb(V)}.

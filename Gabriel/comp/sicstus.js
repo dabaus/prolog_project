@@ -127,7 +127,7 @@ function Sicstus() {
 				}
 			}
 
-			var query = pred + '(' + args.join(',') + ').'; // Create query
+			var query = pred + '(' + (args.length>1?args.join(','):args[0]) + ').'; // Create query
 			
 			// Prepend to pending commands list.
 			pendingCommands.unshift({

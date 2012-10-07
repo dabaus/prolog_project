@@ -5,6 +5,10 @@
 :- include('grammar/grammarStatements.pro').
 :- include('grammar/grammarQuestions.pro').
 
+process(Input) :-
+	atomize(Input, Tokens),
+	phrase(statement, Tokens).
+
 sentence(Input, Resp) :-
 	atomize(Input, Tokens),
 	get_response(Tokens, Out),
@@ -16,3 +20,5 @@ get_response(Tokens, Resp) :-
 	((QAns == true -> process_question(Tokens, Resp)), !);
 	((SAns == true -> process_statement(Tokens, Resp)), !);
 	respondError(Resp).
+
+:- process("animal is big").
