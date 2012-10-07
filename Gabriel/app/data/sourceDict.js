@@ -50,8 +50,7 @@ var adjectives = [
 	{ pos: 'high', com: 'higher', sup: 'highest'},
 	{ pos: 'tall', com: 'taller', sup: 'tallest'},
 	{ pos: 'young', com: 'younger', sup: 'youngest'},
-	{ pos: 'old', com: 'older', sup: 'oldest'},
-	{ pos: '', com: '', sup: ''},
+	{ pos: 'old', com: 'older', sup: 'oldest'}
 ]
 
 items = [
@@ -82,14 +81,15 @@ function processAdjectives() {
 	for (var i = 0; i < adjectives.length; i++){
 		outputString += 'adjective(' + adjectives[i].pos + ').\n';
 		if (typeof adjectives[i].com !== 'undefined') {
-			outputString += 'comparativeAdjective(' + adjectives[i].com + ').\n'
+			outputString += 'comparativeAdjective(' + adjectives[i].com + ').\n';
 		}
 		if (typeof adjectives[i].sup !== 'undefined') {
 			outputString += 'superlativeAdjective(' + adjectives[i].sup + ').\n';
 		}
 		if (typeof adjectives[i].irr !== 'undefined') {
 			if (adjectives[i].irr === true) {
-			outputString += 'nonGradableAdjective(' + adjectives[i].pos + ').\n';
+				outputString += 'nonGradableAdjective(' + adjectives[i].pos + ').\n';
+			}
 		}
 	}
 	return outputString;
@@ -138,4 +138,4 @@ function processRelationships() {
 }
 
 
-console.log(processNouns());
+console.log(processAdjectives());
