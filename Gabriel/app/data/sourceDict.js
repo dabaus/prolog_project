@@ -12,7 +12,6 @@ var nouns = [
 	{ sin: 'air'}
 ]
 
-
 var adjectives = [
 	{ pos: 'angry', com: 'angrier', sup: 'angriest'},
 	{ pos: 'big', com: 'bigger', sup: 'biggest'},
@@ -53,6 +52,23 @@ var adjectives = [
 	{ pos: 'old', com: 'older', sup: 'oldest'}
 ]
 
+var verbs = [
+	{
+		name: 'be',
+		pres: ['am', 'are', 'is', 'are', 'are', 'are'],
+		past: ['was', 'were', 'was', 'were', 'were', 'were'],
+		transitive: true,
+		intransitive: true
+	},
+	{
+		name: 'have',
+		pres: ['have', 'have', 'has', 'have', 'have', 'have'],
+		past: ['had', 'had', 'had', 'had', 'had', 'had'],
+		transitive: true,
+		intransitive: true
+	}
+]
+
 items = [
 	{
 		name: 'thing',
@@ -74,22 +90,43 @@ items = [
 
 function processAdjectives() {
 	var outputString = '';
-	outputString += 'adjective(X) :- comparativeAdjective(_, X).\n';
-	outputString += 'adjective(X) :- superlativeAdjective(_, X).\n';
+	outputString += 'adjective(X) :- comparative_adjective(_, X).\n';
+	outputString += 'adjective(X) :- superlative_adjective(_, X).\n';
 	
 	
 	for (var i = 0; i < adjectives.length; i++){
 		outputString += 'adjective(' + adjectives[i].pos + ').\n';
 		if (typeof adjectives[i].com !== 'undefined') {
-			outputString += 'comparativeAdjective(' + adjectives[i].com + ').\n';
+			outputString += 'comparative_adjective(' + adjectives[i].com + ').\n';
 		}
 		if (typeof adjectives[i].sup !== 'undefined') {
-			outputString += 'superlativeAdjective(' + adjectives[i].sup + ').\n';
+			outputString += 'superlative_adjective(' + adjectives[i].sup + ').\n';
 		}
 		if (typeof adjectives[i].irr !== 'undefined') {
 			if (adjectives[i].irr === true) {
-				outputString += 'nonGradableAdjective(' + adjectives[i].pos + ').\n';
+				outputString += 'non_gradable_adjective(' + adjectives[i].pos + ').\n';
 			}
+		}
+	}
+	return outputString;
+}
+
+function processVerbs() {
+	var outputString = '';
+	
+	for (var i = 0; i < verbs.length; i++){
+		var a = verbs[i].pres;
+		var b = verbs[i].past;
+		outputString += 'verb(' + verbs[i].name + ', conj(' + a.join(', ') + ', ' + b.join(', ') + ')).\n';
+		if (typeof verbs[i].transitive !== 'undefined'){
+				if (verbs[i].transitive === true){
+					outputString += 'transitive_verb(' + verbs[i].name + ').\n';
+				}
+		}
+		if (typeof verbs[i].intransitive !== 'undefined'){
+				if (verbs[i].intransitive === true){
+					outputString += 'intransitive_verb(' + verbs[i].name + ').\n';
+				}
 		}
 	}
 	return outputString;
@@ -102,20 +139,20 @@ function processNouns() {
 		if (typeof nouns[i].sin !== 'undefined') {
 			outputString += "noun(" + nouns[i].sin + ").\n";
 			if (typeof nouns[i].plu !== 'undefined') {
-				outputString += "pluralOf(" + nouns[i].sin + ", " + nouns[i].plu + ").\n";
+				outputString += "plural_of(" + nouns[i].sin + ", " + nouns[i].plu + ").\n";
 				outputString += "noun(" + nouns[i].plu + ").\n";
-				outputString += "isCountable(" + nouns[i].sin + ").\n";
+				outputString += "is_countable(" + nouns[i].sin + ").\n";
 			}
 
 			if (typeof nouns[i].col !== 'undefined') {
-				outputString += "collectiveOf(" + nouns[i].sin + ", " + nouns[i].col + ").\n";
+				outputString += "collective_of(" + nouns[i].sin + ", " + nouns[i].col + ").\n";
 				outputString += "noun(" + nouns[i].col + ").\n";
-				outputString += "isCollective(" + nouns[i].col + ").\n";
+				outputString += "is_collective(" + nouns[i].col + ").\n";
 
 				if (typeof nouns[i].colp !== 'undefined') {
-					outputString += "pluralOf(" + nouns[i].col + ", " + nouns[i].colp + ").\n";
+					outputString += "plural_of(" + nouns[i].col + ", " + nouns[i].colp + ").\n";
 					outputString += "noun(" + nouns[i].colp + ").\n";
-					outputString += "isCollective(" + nouns[i].colp + ").\n";
+					outputString += "is_collective(" + nouns[i].colp + ").\n";
 				}			
 			}
 		}
@@ -125,17 +162,20 @@ function processNouns() {
 }
 
 function processRelationships() {
-	var outputString = "";
+	var outputString = '';
 	for (var i = 0; i < items.length; i++) {
 		if (typeof items[i].name !== 'undefined') {
 			if (typeof items[i].children !== 'undefined') {
 				for (var c = 0; c < items[i].children.length; c++) {
-					outputString += 'childOf'
+					outputString += 'child_of('+ items[i].children[c] + ', ' + items[i].name +').\n';
 				}
 			}
 		}
 	}
+	return outputString;
 }
 
-
-console.log(processAdjectives());
+exports.genAdjectives = processAdjectives;
+exports.genNouns = processNouns;
+exports.genRelationships = processRelationships;
+exports.genVerbs = processVerbs;

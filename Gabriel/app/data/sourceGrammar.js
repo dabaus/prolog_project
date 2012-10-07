@@ -7,29 +7,29 @@ var partsOfSpeech = [
 				name: 'article',
 				subc: [
 					{
-						name: 'definiteArticle',
+						name: 'definite_article',
 						vals: ['the']
 					},
 					{
-						name: 'indefiniteArticle',
+						name: 'indefinite_article',
 						vals: ['a', 'an']
 					},
 					{
-						name: 'partitiveArticle',
+						name: 'partitive_article',
 						vals: ['some']
 					}
 				]
 			},
 			{
-				name: 'demonstrativeDeterminer',
+				name: 'demonstrative_determiner',
 				vals: ['this', 'that', 'these', 'those']
 			},
 			{
-				name: 'interrogativeDeterminer',
+				name: 'interrogative_determiner',
 				vals: ['which', 'what', 'whose']
 			},
 			{
-				name: 'possessiveDeterminer',
+				name: 'possessive_determiner',
 				vals: ['my', 'your', 'his', 'her', 'its', 'our', 'their', 'whose']
 			},
 			{
@@ -42,28 +42,28 @@ var partsOfSpeech = [
 		name: 'pronoun',
 		subc: [
 			{
-				name: 'personalPronoun',
+				name: 'personal_pronoun',
 				subc: [
 					{
-						name: 'personalSubjectPronoun',
+						name: 'personal_subject_pronoun',
 						vals: ['I', 'you', 'he', 'she', 'it', 'we', 'they']
 					},
 					{
-						name: 'personalObjectPronoun',
+						name: 'personal_object_pronoun',
 						vals: ['me', 'you', 'him', 'her', 'it', 'us', 'them']
 					},
 				]
 			},
 			{
-				name: 'demonstrativePronoun',
+				name: 'demonstrative_pronoun',
 				vals: ['this', 'that', 'these', 'those']
 			},
 			{
-				name: 'interrogativePronoun',
+				name: 'interrogative_pronoun',
 				vals: ['who', 'whom', 'what', 'which', 'where', 'when', 'how', 'why']
 			},
 			{
-				name: 'possessivePronoun',
+				name: 'possessive_pronoun',
 				vals: ['mine', 'yours', 'his', 'hers', 'its', 'ours', 'theirs']
 			}
 		]
@@ -89,5 +89,5 @@ function generateParts(list, parent) {
 }
 
 exports.genGrammar = function(){
-	generateParts(partsOfSpeech);
+	return generateParts(partsOfSpeech);
 };
