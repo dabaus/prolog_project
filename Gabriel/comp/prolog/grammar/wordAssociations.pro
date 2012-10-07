@@ -1,3 +1,5 @@
+:- use_module(library(between)).
+
 /* -- VERB -- */
 
 getVerb(Verb, Conj) :-
