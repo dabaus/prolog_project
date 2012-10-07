@@ -90,10 +90,10 @@ items = [
 
 function processAdjectives() {
 	var outputString = '';
+	outputString += ':- discontiguous adjective/1, comparative_adjective/1, superlative_adjective/1, non_gradable_adjective/1.\n';
 	outputString += 'adjective(X) :- comparative_adjective(_, X).\n';
 	outputString += 'adjective(X) :- superlative_adjective(_, X).\n';
 	
-	outputString += ':- discontiguous :adjective/1, :comparative_adjective/1, :superlative_adjective/1, :non_gradable_adjective/.\n';
 
 	for (var i = 0; i < adjectives.length; i++){
 		outputString += 'adjective(' + adjectives[i].pos + ').\n';
@@ -114,6 +114,8 @@ function processAdjectives() {
 
 function processVerbs() {
 	var outputString = '';
+	
+	outputString += ':- discontiguous transitive_verb/1, intransitive_verb/1, conjugation/2.\n';
 	
 	for (var i = 0; i < verbs.length; i++){
 		var a = verbs[i].pres;
@@ -136,6 +138,9 @@ function processVerbs() {
 
 function processNouns() {
 	var outputString = '';
+	
+	outputString += ':- discontiguous noun/1, plural_of/2, is_countable/1, collective_of/1, is_collective/1.\n';
+	
 	for (var i = 0; i < nouns.length; i++) {
 		if (typeof nouns[i].sin !== 'undefined') {
 			outputString += "noun(" + nouns[i].sin + ").\n";
@@ -164,6 +169,9 @@ function processNouns() {
 
 function processRelationships() {
 	var outputString = '';
+	
+	outputString += ':- discontiguous child_of/1.\n';
+	
 	for (var i = 0; i < items.length; i++) {
 		if (typeof items[i].name !== 'undefined') {
 			if (typeof items[i].children !== 'undefined') {

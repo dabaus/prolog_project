@@ -1,7 +1,7 @@
 % Adjectives
+:- discontiguous adjective/1, comparative_adjective/1, superlative_adjective/1, non_gradable_adjective/1.
 adjective(X) :- comparative_adjective(_, X).
 adjective(X) :- superlative_adjective(_, X).
-:- discontiguous :adjective/1, :comparative_adjective/1, :superlative_adjective/1, :non_gradable_adjective/.
 adjective(angry).
 comparative_adjective(angrier).
 superlative_adjective(angriest).
@@ -113,6 +113,7 @@ adjective(old).
 comparative_adjective(older).
 superlative_adjective(oldest).
 % Nouns
+:- discontiguous noun/1, plural_of/2, is_countable/1, collective_of/1, is_collective/1.
 noun(thing).
 plural_of(thing, things).
 noun(things).
@@ -155,6 +156,7 @@ noun(animals).
 is_countable(animal).
 noun(air).
 % Verbs
+:- discontiguous transitive_verb/1, intransitive_verb/1, conjugation/2.
 conjugation(be, conj(am, are, is, are, are, are, was, were, was, were, were, were)).
 transitive_verb(be).
 intransitive_verb(be).
@@ -162,6 +164,7 @@ conjugation(have, conj(have, have, has, have, have, have, had, had, had, had, ha
 transitive_verb(have).
 intransitive_verb(have).
 % Relationships
+:- discontiguous child_of/1.
 child_of(organism, thing).
 child_of(prokaryote, organism).
 child_of(eukaryote, organism).
@@ -172,7 +175,10 @@ child_of(plant, eukaryote).
 child_of(fungus, eukaryote).
 child_of(animal, eukaryote).
 % Grammar
+:- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
+:- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 determiner(X) :- article(X).
+:- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 article(X) :- definite_article(X).
 definite_article(the).
 article(X) :- indefinite_article(X).
@@ -201,9 +207,11 @@ possessive_determiner(whose).
 determiner(X) :- quantifier(X).
 quantifier(some).
 quantifier(many).
+:- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 pronoun(X) :- personal_pronoun(X).
+:- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 personal_pronoun(X) :- personal_subject_pronoun(X).
-personal_subject_pronoun(I).
+personal_subject_pronoun(i).
 personal_subject_pronoun(you).
 personal_subject_pronoun(he).
 personal_subject_pronoun(she).

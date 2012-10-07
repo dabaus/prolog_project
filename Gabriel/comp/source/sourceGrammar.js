@@ -46,7 +46,7 @@ var partsOfSpeech = [
 				subc: [
 					{
 						name: 'personal_subject_pronoun',
-						vals: ['I', 'you', 'he', 'she', 'it', 'we', 'they']
+						vals: ['i', 'you', 'he', 'she', 'it', 'we', 'they']
 					},
 					{
 						name: 'personal_object_pronoun',
@@ -72,6 +72,9 @@ var partsOfSpeech = [
 
 function generateParts(list, parent) {
 	var statements = '';
+	
+	statements += ':- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.\n';
+		
 	for (var i = 0; i < list.length; i++) {
 		if (typeof parent !== 'undefined') {
 			statements += parent + '(X) :- ' + list[i].name + '(X).\n';
