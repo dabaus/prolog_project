@@ -9,6 +9,8 @@ var nouns = [
 	{ sin: 'plant', plu: 'plants', abs: false},
 	{ sin: 'fungus', plu: 'fungi', abs: false},
 	{ sin: 'animal', plu: 'animals', abs: false},
+	{ sin: 'person', plu: 'persons', col: 'people', colp:'peoples', abs: false},
+	{ sin: 'house', plu: 'houses', abs: false},
 	{ sin: 'air'}
 ]
 
@@ -91,8 +93,8 @@ items = [
 function processAdjectives() {
 	var outputString = '';
 	outputString += ':- discontiguous adjective/1, comparative_adjective/1, superlative_adjective/1, non_gradable_adjective/1.\n';
-	outputString += 'adjective(X) :- comparative_adjective(_, X).\n';
-	outputString += 'adjective(X) :- superlative_adjective(_, X).\n';
+	outputString += 'adjective(X) :- comparative_adjective(X).\n';
+	outputString += 'adjective(X) :- superlative_adjective(X).\n';
 	
 
 	for (var i = 0; i < adjectives.length; i++){
@@ -114,8 +116,7 @@ function processAdjectives() {
 
 function processVerbs() {
 	var outputString = '';
-	
-	outputString += ':- discontiguous transitive_verb/1, intransitive_verb/1, conjugation/2.\n';
+	outputString += ':- discontiguous transitive_v/1, intransitive_v/1, conjugation/2.\n';
 	
 	for (var i = 0; i < verbs.length; i++){
 		var a = verbs[i].pres;
@@ -123,12 +124,12 @@ function processVerbs() {
 		outputString += 'conjugation(' + verbs[i].name + ', conj(' + a.join(', ') + ', ' + b.join(', ') + ')).\n';
 		if (typeof verbs[i].transitive !== 'undefined'){
 				if (verbs[i].transitive === true){
-					outputString += 'transitive_verb(' + verbs[i].name + ').\n';
+					outputString += 'transitive_v(' + verbs[i].name + ').\n';
 				}
 		}
 		if (typeof verbs[i].intransitive !== 'undefined'){
 				if (verbs[i].intransitive === true){
-					outputString += 'intransitive_verb(' + verbs[i].name + ').\n';
+					outputString += 'intransitive_v(' + verbs[i].name + ').\n';
 				}
 		}
 	}

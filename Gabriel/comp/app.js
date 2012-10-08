@@ -13,11 +13,6 @@ inst.init();
 
 inst.consult('prolog/main.pro');
 
-inst.state('verb', ['was']);
-inst.state('verb', ['wus']);
+//	inst.queryOne('sentence', ['"the house has animals"', 'X']);
 
-inst.state('process', ['"The house is red."']);
-
-
-inst.queryOne('sentence', ['"The house is red."', 'X']);
-inst.queryOne('sentence', ['"Is the house red?"', 'X']);
+inst.queryOne('get_statement_subject', ['[the, blue, house, is, red]', 'X']);
