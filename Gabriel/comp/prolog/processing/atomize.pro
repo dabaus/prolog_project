@@ -10,7 +10,7 @@ reverse([], Acc, Out) :-
 % atomize(InputString, ListOfTokens)
 % Turns a space-sparated string into a series of atoms
 atomize(X, Out) :- % Interface
-        atomize(X, [], [], Out).
+        atomize(X, [], [], Out), !.
 atomize([], [], WA, Out) :-             % Reverse answer, return result
         reverse(WA, Out).
 atomize([X], [], WA, Out) :-            % Check if last remaining character is

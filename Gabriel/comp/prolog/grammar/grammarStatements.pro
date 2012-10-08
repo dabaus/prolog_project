@@ -1,9 +1,9 @@
 statement --> interjection.
 statement --> noun_phrase, verb_phrase.
 
+noun_phrase --> noun.
 noun_phrase --> pronoun.
 noun_phrase --> determiner, noun.
-noun_phrase --> determiner, adjective.
 noun_phrase --> determiner, adjective, noun.
 
 verb_phrase --> transitive_verb, noun_phrase.

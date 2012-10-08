@@ -170,13 +170,13 @@ noun(houses).
 is_countable(house).
 noun(air).
 % Verbs
-:- discontiguous transitive_verb/1, intransitive_verb/1, conjugation/2.
+:- discontiguous transitive_v/1, intransitive_v/1, conjugation/2.
 conjugation(be, conj(am, are, is, are, are, are, was, were, was, were, were, were)).
-transitive_verb(be).
-intransitive_verb(be).
+transitive_v(be).
+intransitive_v(be).
 conjugation(have, conj(have, have, has, have, have, have, had, had, had, had, had, had)).
-transitive_verb(have).
-intransitive_verb(have).
+transitive_v(have).
+intransitive_v(have).
 % Relationships
 :- discontiguous child_of/1.
 child_of(organism, thing).

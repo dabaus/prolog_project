@@ -13,4 +13,6 @@ inst.init();
 
 inst.consult('prolog/main.pro');
 
-inst.queryOne('sentence', ['"the house is big"', 'X']);
+//	inst.queryOne('sentence', ['"the house has animals"', 'X']);
+
+inst.queryOne('get_statement_subject', ['[the, blue, house, is, red]', 'X']);
