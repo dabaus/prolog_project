@@ -39,10 +39,13 @@ adjective(big).
 %main(Out) :- phrase(sentence(s(_,vp(loves,np(every,woman)))), Out).
 
 main :-
-        write('Sentence:'),
+        write('Statement:'),
         read_line(X),
         atomize(X, Atoms),
         phrase(statement(Out), Atoms),
+        findElement(ad, Out, Adjective),
+        findElement(n, Out, Noun),
+        assert(fact(Noun, Adjective)),
         write(Out).
  
 findElement(El, Tree, Out) :-
