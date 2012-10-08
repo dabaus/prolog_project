@@ -1,7 +1,7 @@
 % Adjectives
 :- discontiguous adjective/1, comparative_adjective/1, superlative_adjective/1, non_gradable_adjective/1.
-adjective(X) :- comparative_adjective(_, X).
-adjective(X) :- superlative_adjective(_, X).
+adjective(X) :- comparative_adjective(X).
+adjective(X) :- superlative_adjective(X).
 adjective(angry).
 comparative_adjective(angrier).
 superlative_adjective(angriest).
@@ -154,6 +154,20 @@ noun(animal).
 plural_of(animal, animals).
 noun(animals).
 is_countable(animal).
+noun(person).
+plural_of(person, persons).
+noun(persons).
+is_countable(person).
+collective_of(person, people).
+noun(people).
+is_collective(people).
+plural_of(people, peoples).
+noun(peoples).
+is_collective(peoples).
+noun(house).
+plural_of(house, houses).
+noun(houses).
+is_countable(house).
 noun(air).
 % Verbs
 :- discontiguous transitive_verb/1, intransitive_verb/1, conjugation/2.
@@ -248,3 +262,6 @@ possessive_pronoun(hers).
 possessive_pronoun(its).
 possessive_pronoun(ours).
 possessive_pronoun(theirs).
+interjection(hello).
+interjection(hi).
+interjection(yo).

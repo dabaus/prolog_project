@@ -9,3 +9,4 @@ getVerb(Verb, Conj) :-
         arg(Index, Conjugations, Conj).
 
 verb(Conj) :- getVerb(_, Conj).
+

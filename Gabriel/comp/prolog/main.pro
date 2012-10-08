@@ -1,24 +1,20 @@
-:- include('processing/atomize.pro').
-:- include('processing/evaluate.pro').
-:- include('data/data.pro').
-:- include('grammar/wordAssociations.pro').
-:- include('grammar/grammarStatements.pro').
-:- include('grammar/grammarQuestions.pro').
-
-process(Input) :-
-	atomize(Input, Tokens),
-	phrase(statement, Tokens).
+:- consult('processing/atomize.pro').
+:- consult('processing/evaluate.pro').
+:- consult('data/data.pro').
+:- consult('grammar/wordAssociations.pro').
+:- consult('grammar/grammarStatements.pro').
+%:- consult('grammar/grammarQuestions.pro').
 
 sentence(Input, Resp) :-
 	atomize(Input, Tokens),
-	get_response(Tokens, Out),
-	atom_codes(Resp, Out).
+	((is_statement(Tokens) -> process_statement(Tokens, Resp)), !);
+	respond_error(Resp).
+	
+is_statement(Tokens):-
+	phrase(statement, Tokens).
 
-get_response(Tokens, Resp) :-
-	is_question(Tokens, QAns),
-	is_statement(Tokens, SAns),
-	((QAns == true -> process_question(Tokens, Resp)), !);
-	((SAns == true -> process_statement(Tokens, Resp)), !);
-	respondError(Resp).
+process_statement(Tokens, Resp) :-
+	Resp = "This is a statement.".
 
-:- process("animal is big").
+respond_error(Resp) :-
+	Resp = "This is an error.".

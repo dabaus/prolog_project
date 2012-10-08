@@ -9,6 +9,8 @@ var nouns = [
 	{ sin: 'plant', plu: 'plants', abs: false},
 	{ sin: 'fungus', plu: 'fungi', abs: false},
 	{ sin: 'animal', plu: 'animals', abs: false},
+	{ sin: 'person', plu: 'persons', col: 'people', colp:'peoples', abs: false},
+	{ sin: 'house', plu: 'houses', abs: false},
 	{ sin: 'air'}
 ]
 
@@ -91,8 +93,8 @@ items = [
 function processAdjectives() {
 	var outputString = '';
 	outputString += ':- discontiguous adjective/1, comparative_adjective/1, superlative_adjective/1, non_gradable_adjective/1.\n';
-	outputString += 'adjective(X) :- comparative_adjective(_, X).\n';
-	outputString += 'adjective(X) :- superlative_adjective(_, X).\n';
+	outputString += 'adjective(X) :- comparative_adjective(X).\n';
+	outputString += 'adjective(X) :- superlative_adjective(X).\n';
 	
 
 	for (var i = 0; i < adjectives.length; i++){

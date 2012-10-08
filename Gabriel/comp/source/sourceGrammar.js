@@ -67,6 +67,10 @@ var partsOfSpeech = [
 				vals: ['mine', 'yours', 'his', 'hers', 'its', 'ours', 'theirs']
 			}
 		]
+	},
+	{
+		name: 'interjection',
+		vals: ['hello', 'hi', 'yo']
 	}
 ]
 
