@@ -77,7 +77,9 @@ var partsOfSpeech = [
 function generateParts(list, parent) {
 	var statements = '';
 	
-	statements += ':- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.\n';
+	if (typeof parent === 'undefined') {
+		statements += ':- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.\n';
+	}
 		
 	for (var i = 0; i < list.length; i++) {
 		if (typeof parent !== 'undefined') {

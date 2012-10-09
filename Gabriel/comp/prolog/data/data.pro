@@ -28,6 +28,9 @@ superlative_adjective(craziest).
 adjective(dark).
 comparative_adjective(darker).
 superlative_adjective(darkest).
+adjective(fast).
+comparative_adjective(faster).
+superlative_adjective(fastest).
 adjective(green).
 comparative_adjective(greener).
 superlative_adjective(greenest).
@@ -40,6 +43,9 @@ superlative_adjective(hardest).
 adjective(heavy).
 comparative_adjective(heavier).
 superlative_adjective(heaviest).
+adjective(high).
+comparative_adjective(higher).
+superlative_adjective(highest).
 adjective(hot).
 comparative_adjective(hotter).
 superlative_adjective(hottest).
@@ -52,6 +58,12 @@ superlative_adjective(lightest).
 adjective(loud).
 comparative_adjective(louder).
 superlative_adjective(loudest).
+adjective(low).
+comparative_adjective(lower).
+superlative_adjective(lowest).
+adjective(old).
+comparative_adjective(older).
+superlative_adjective(oldest).
 adjective(orange).
 comparative_adjective(oranger).
 superlative_adjective(orangest).
@@ -67,6 +79,9 @@ superlative_adjective(saddest).
 adjective(shiny).
 comparative_adjective(shinier).
 superlative_adjective(shiniest).
+adjective(slow).
+comparative_adjective(slower).
+superlative_adjective(slowest).
 adjective(small).
 comparative_adjective(smaller).
 superlative_adjective(smallest).
@@ -79,6 +94,9 @@ superlative_adjective(softest).
 adjective(strong).
 comparative_adjective(stronger).
 superlative_adjective(strongest).
+adjective(tall).
+comparative_adjective(taller).
+superlative_adjective(tallest).
 adjective(tiny).
 comparative_adjective(tinier).
 superlative_adjective(tiniest).
@@ -91,69 +109,222 @@ superlative_adjective(weakest).
 adjective(yellow).
 comparative_adjective(yellower).
 superlative_adjective(yellowest).
-adjective(fast).
-comparative_adjective(faster).
-superlative_adjective(fastest).
-adjective(slow).
-comparative_adjective(slower).
-superlative_adjective(slowest).
-adjective(low).
-comparative_adjective(lower).
-superlative_adjective(lowest).
-adjective(high).
-comparative_adjective(higher).
-superlative_adjective(highest).
-adjective(tall).
-comparative_adjective(taller).
-superlative_adjective(tallest).
 adjective(young).
 comparative_adjective(younger).
 superlative_adjective(youngest).
-adjective(old).
-comparative_adjective(older).
-superlative_adjective(oldest).
 % Nouns
 :- discontiguous noun/1, plural_of/2, is_countable/1, collective_of/1, is_collective/1.
-noun(thing).
-plural_of(thing, things).
-noun(things).
-is_countable(thing).
-noun(organism).
-plural_of(organism, organisms).
-noun(organisms).
-is_countable(organism).
-noun(prokaryote).
-plural_of(prokaryote, prokaryotes).
-noun(prokaryotes).
-is_countable(prokaryote).
-noun(eukaryote).
-plural_of(eukaryote, eukaryotes).
-noun(eukaryotes).
-is_countable(eukaryote).
-noun(bacterium).
-plural_of(bacterium, bacteria).
-noun(bacteria).
-is_countable(bacterium).
-noun(archaeon).
-plural_of(archaeon, archaea).
-noun(archaea).
-is_countable(archaeon).
-noun(protist).
-plural_of(protist, protists).
-noun(protists).
-is_countable(protist).
-noun(plant).
-plural_of(plant, plants).
-noun(plants).
-is_countable(plant).
-noun(fungus).
-plural_of(fungus, fungi).
-noun(fungi).
-is_countable(fungus).
+noun(air).
+noun(anger).
 noun(animal).
 plural_of(animal, animals).
 noun(animals).
 is_countable(animal).
+noun(apple).
+plural_of(apple, apples).
+noun(apples).
+is_countable(apple).
+noun(archaeon).
+plural_of(archaeon, archaea).
+noun(archaea).
+is_countable(archaeon).
+noun(arm).
+plural_of(arm, arms).
+noun(arms).
+is_countable(arm).
+noun(bacterium).
+plural_of(bacterium, bacteria).
+noun(bacteria).
+is_countable(bacterium).
+noun(bear).
+plural_of(bear, bears).
+noun(bears).
+is_countable(bear).
+noun(bell).
+plural_of(bell, bells).
+noun(bells).
+is_countable(bell).
+noun(berry).
+plural_of(berry, berries).
+noun(berries).
+is_countable(berry).
+noun(bird).
+plural_of(bird, birds).
+noun(birds).
+is_countable(bird).
+noun(boat).
+plural_of(boat, boats).
+noun(boats).
+is_countable(boat).
+noun(book).
+plural_of(book, books).
+noun(books).
+is_countable(book).
+noun(box).
+plural_of(box, boxes).
+noun(boxes).
+is_countable(box).
+noun(boy).
+plural_of(boy, boys).
+noun(boys).
+is_countable(boy).
+noun(captain).
+plural_of(captain, captains).
+noun(captains).
+is_countable(captain).
+noun(car).
+plural_of(car, cars).
+noun(cars).
+is_countable(car).
+noun(cat).
+plural_of(cat, cats).
+noun(cats).
+is_countable(cat).
+collective_of(cat, clowder).
+noun(clowder).
+is_collective(clowder).
+noun(century).
+plural_of(century, centuries).
+noun(centuries).
+is_countable(century).
+noun(chair).
+plural_of(chair, chairs).
+noun(chairs).
+is_countable(chair).
+noun(chest).
+plural_of(chest, chests).
+noun(chests).
+is_countable(chest).
+noun(chicken).
+plural_of(chicken, chickens).
+noun(chickens).
+is_countable(chicken).
+noun(child).
+plural_of(child, children).
+noun(children).
+is_countable(child).
+noun(computer).
+plural_of(computer, computers).
+noun(computers).
+is_countable(computer).
+noun(cow).
+plural_of(cow, cows).
+noun(cows).
+is_countable(cow).
+noun(day).
+plural_of(day, days).
+noun(days).
+is_countable(day).
+noun(dog).
+plural_of(dog, dogs).
+noun(dogs).
+is_countable(dog).
+noun(duck).
+plural_of(duck, ducks).
+noun(ducks).
+is_countable(duck).
+collective_of(duck, flock).
+noun(flock).
+is_collective(flock).
+noun(ear).
+plural_of(ear, ears).
+noun(ears).
+is_countable(ear).
+noun(elephant).
+plural_of(elephant, elephants).
+noun(elephants).
+is_countable(elephant).
+noun(eukaryote).
+plural_of(eukaryote, eukaryotes).
+noun(eukaryotes).
+is_countable(eukaryote).
+noun(face).
+plural_of(face, faces).
+noun(faces).
+is_countable(face).
+noun(fruit).
+plural_of(fruit, fruits).
+noun(fruits).
+is_countable(fruit).
+noun(fungus).
+plural_of(fungus, fungi).
+noun(fungi).
+is_countable(fungus).
+noun(giraffe).
+plural_of(giraffe, giraffes).
+noun(giraffes).
+is_countable(giraffe).
+noun(girl).
+plural_of(girl, girls).
+noun(girls).
+is_countable(girl).
+noun(hate).
+noun(head).
+plural_of(head, heads).
+noun(heads).
+is_countable(head).
+noun(heart).
+plural_of(heart, hearts).
+noun(hearts).
+is_countable(heart).
+noun(hen).
+plural_of(hen, hens).
+noun(hens).
+is_countable(hen).
+noun(home).
+plural_of(home, homes).
+noun(homes).
+is_countable(home).
+noun(horse).
+plural_of(horse, horses).
+noun(horses).
+is_countable(horse).
+noun(house).
+plural_of(house, houses).
+noun(houses).
+is_countable(house).
+noun(leg).
+plural_of(leg, legs).
+noun(legs).
+is_countable(leg).
+noun(love).
+noun(man).
+plural_of(man, men).
+noun(men).
+is_countable(man).
+noun(mink).
+plural_of(mink, minks).
+noun(minks).
+is_countable(mink).
+noun(month).
+plural_of(month, months).
+noun(months).
+is_countable(month).
+noun(mouth).
+plural_of(mouth, mouths).
+noun(mouths).
+is_countable(mouth).
+noun(nose).
+plural_of(nose, noses).
+noun(noses).
+is_countable(nose).
+noun(orange).
+plural_of(orange, oranges).
+noun(oranges).
+is_countable(orange).
+noun(organism).
+plural_of(organism, organisms).
+noun(organisms).
+is_countable(organism).
+noun(peace).
+noun(peanut).
+plural_of(peanut, peanuts).
+noun(peanuts).
+is_countable(peanut).
+noun(pear).
+plural_of(pear, pears).
+noun(pears).
+is_countable(pear).
 noun(person).
 plural_of(person, persons).
 noun(persons).
@@ -164,11 +335,79 @@ is_collective(people).
 plural_of(people, peoples).
 noun(peoples).
 is_collective(peoples).
-noun(house).
-plural_of(house, houses).
-noun(houses).
-is_countable(house).
-noun(air).
+noun(pig).
+plural_of(pig, pigs).
+noun(pigs).
+is_countable(pig).
+noun(plane).
+plural_of(plane, planes).
+noun(planes).
+is_countable(plane).
+noun(plant).
+plural_of(plant, plants).
+noun(plants).
+is_countable(plant).
+noun(pride).
+noun(prokaryote).
+plural_of(prokaryote, prokaryotes).
+noun(prokaryotes).
+is_countable(prokaryote).
+noun(protist).
+plural_of(protist, protists).
+noun(protists).
+is_countable(protist).
+noun(rooster).
+plural_of(rooster, roosters).
+noun(roosters).
+is_countable(rooster).
+noun(sheep).
+plural_of(sheep, sheep).
+noun(sheep).
+is_countable(sheep).
+noun(snake).
+plural_of(snake, snakes).
+noun(snakes).
+is_countable(snake).
+noun(soldier).
+plural_of(soldier, soldiers).
+noun(soldiers).
+is_countable(soldier).
+noun(strawberry).
+plural_of(strawberry, strawberries).
+noun(strawberries).
+is_countable(strawberry).
+noun(table).
+plural_of(table, tables).
+noun(tables).
+is_countable(table).
+noun(thing).
+plural_of(thing, things).
+noun(things).
+is_countable(thing).
+noun(tree).
+plural_of(tree, trees).
+noun(trees).
+is_countable(tree).
+noun(truck).
+plural_of(truck, trucks).
+noun(trucks).
+is_countable(truck).
+noun(walnut).
+plural_of(walnut, walnuts).
+noun(walnuts).
+is_countable(walnut).
+noun(week).
+plural_of(week, weeks).
+noun(weeks).
+is_countable(week).
+noun(woman).
+plural_of(woman, women).
+noun(women).
+is_countable(woman).
+noun(year).
+plural_of(year, years).
+noun(years).
+is_countable(year).
 % Verbs
 :- discontiguous transitive_v/1, intransitive_v/1, conjugation/2.
 conjugation(be, conj(am, are, is, are, are, are, was, were, was, were, were, were)).
@@ -190,9 +429,7 @@ child_of(fungus, eukaryote).
 child_of(animal, eukaryote).
 % Grammar
 :- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
-:- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 determiner(X) :- article(X).
-:- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 article(X) :- definite_article(X).
 definite_article(the).
 article(X) :- indefinite_article(X).
@@ -221,9 +458,7 @@ possessive_determiner(whose).
 determiner(X) :- quantifier(X).
 quantifier(some).
 quantifier(many).
-:- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 pronoun(X) :- personal_pronoun(X).
-:- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 personal_pronoun(X) :- personal_subject_pronoun(X).
 personal_subject_pronoun(i).
 personal_subject_pronoun(you).
