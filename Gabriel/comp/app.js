@@ -15,4 +15,12 @@ inst.consult('prolog/main.pro');
 
 //	inst.queryOne('sentence', ['"the house has animals"', 'X']);
 
-inst.queryOne('sentence', ['[the, blue, house, is, red]', 'X']);
+inst.queryOne('sentence', ['"the blue house is big"', 'X'], function(err, res){
+	console.log("Error: " + err);
+	console.log("Response: " + res.X);
+});
+
+inst.queryOne('sentence', ['"the blue house is a home"', 'X'], function(err, res){
+	console.log("Error: " + err);
+	console.log("Response: " + res.X);
+});
