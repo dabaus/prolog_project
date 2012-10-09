@@ -176,6 +176,10 @@ noun(car).
 plural_of(car, cars).
 noun(cars).
 is_countable(car).
+noun(case).
+plural_of(case, cases).
+noun(cases).
+is_countable(case).
 noun(cat).
 plural_of(cat, cats).
 noun(cats).
@@ -203,6 +207,10 @@ noun(child).
 plural_of(child, children).
 noun(children).
 is_countable(child).
+noun(company).
+plural_of(company, companies).
+noun(companies).
+is_countable(company).
 noun(computer).
 plural_of(computer, computers).
 noun(computers).
@@ -238,10 +246,18 @@ noun(eukaryote).
 plural_of(eukaryote, eukaryotes).
 noun(eukaryotes).
 is_countable(eukaryote).
+noun(eye).
+plural_of(eye, eys).
+noun(eys).
+is_countable(eye).
 noun(face).
 plural_of(face, faces).
 noun(faces).
 is_countable(face).
+noun(fact).
+plural_of(fact, facts).
+noun(facts).
+is_countable(fact).
 noun(fruit).
 plural_of(fruit, fruits).
 noun(fruits).
@@ -258,6 +274,18 @@ noun(girl).
 plural_of(girl, girls).
 noun(girls).
 is_countable(girl).
+noun(government).
+plural_of(government, governments).
+noun(governments).
+is_countable(government).
+noun(group).
+plural_of(group, groups).
+noun(groups).
+is_countable(group).
+noun(hand).
+plural_of(hand, hands).
+noun(hands).
+is_countable(hand).
 noun(hate).
 noun(head).
 plural_of(head, heads).
@@ -287,6 +315,10 @@ noun(leg).
 plural_of(leg, legs).
 noun(legs).
 is_countable(leg).
+noun(life).
+plural_of(life, lives).
+noun(lives).
+is_countable(life).
 noun(love).
 noun(man).
 plural_of(man, men).
@@ -308,6 +340,10 @@ noun(nose).
 plural_of(nose, noses).
 noun(noses).
 is_countable(nose).
+noun(number).
+plural_of(number, numbers).
+noun(numbers).
+is_countable(number).
 noun(orange).
 plural_of(orange, oranges).
 noun(oranges).
@@ -316,6 +352,10 @@ noun(organism).
 plural_of(organism, organisms).
 noun(organisms).
 is_countable(organism).
+noun(part).
+plural_of(part, parts).
+noun(parts).
+is_countable(part).
 noun(peace).
 noun(peanut).
 plural_of(peanut, peanuts).
@@ -339,6 +379,10 @@ noun(pig).
 plural_of(pig, pigs).
 noun(pigs).
 is_countable(pig).
+noun(place).
+plural_of(place, places).
+noun(places).
+is_countable(place).
 noun(plane).
 plural_of(plane, planes).
 noun(planes).
@@ -347,7 +391,15 @@ noun(plant).
 plural_of(plant, plants).
 noun(plants).
 is_countable(plant).
+noun(point).
+plural_of(point, points).
+noun(points).
+is_countable(point).
 noun(pride).
+noun(problem).
+plural_of(problem, problems).
+noun(problems).
+is_countable(problem).
 noun(prokaryote).
 plural_of(prokaryote, prokaryotes).
 noun(prokaryotes).
@@ -384,6 +436,10 @@ noun(thing).
 plural_of(thing, things).
 noun(things).
 is_countable(thing).
+noun(time).
+plural_of(time, times).
+noun(times).
+is_countable(time).
 noun(tree).
 plural_of(tree, trees).
 noun(trees).
@@ -396,6 +452,10 @@ noun(walnut).
 plural_of(walnut, walnuts).
 noun(walnuts).
 is_countable(walnut).
+noun(way).
+plural_of(way, ways).
+noun(ways).
+is_countable(way).
 noun(week).
 plural_of(week, weeks).
 noun(weeks).
@@ -404,6 +464,14 @@ noun(woman).
 plural_of(woman, women).
 noun(women).
 is_countable(woman).
+noun(work).
+plural_of(work, works).
+noun(works).
+is_countable(work).
+noun(world).
+plural_of(world, worlds).
+noun(worlds).
+is_countable(world).
 noun(year).
 plural_of(year, years).
 noun(years).
@@ -418,15 +486,15 @@ transitive_v(have).
 intransitive_v(have).
 % Relationships
 :- discontiguous child_of/1.
-child_of(organism, thing).
-child_of(prokaryote, organism).
-child_of(eukaryote, organism).
-child_of(bacterium, prokaryote).
-child_of(archaeon, prokaryote).
-child_of(protist, eukaryote).
-child_of(plant, eukaryote).
-child_of(fungus, eukaryote).
-child_of(animal, eukaryote).
+child_of(thing, organism).
+child_of(organism, prokaryote).
+child_of(organism, eukaryote).
+child_of(prokaryote, bacterium).
+child_of(prokaryote, archaeon).
+child_of(eukaryote, protist).
+child_of(eukaryote, plant).
+child_of(eukaryote, fungus).
+child_of(eukaryote, animal).
 % Grammar
 :- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 determiner(X) :- article(X).
