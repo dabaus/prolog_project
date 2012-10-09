@@ -11,6 +11,22 @@ var nouns = [
 	{ sin: 'animal', plu: 'animals', abs: false},
 	{ sin: 'person', plu: 'persons', col: 'people', colp:'peoples', abs: false},
 	{ sin: 'house', plu: 'houses', abs: false},
+	{ sin: 'tree', plu: 'trees', abs: false},
+	{ sin: 'horse', plu: 'horses', abs: false},
+	{ sin: 'dog', plu: 'dogs', abs: false},
+	{ sin: 'cat', plu: 'cats', col:'clowder', abs: false},
+	{ sin: 'duck', plu: 'ducks', col:'flock', abs: false},
+	{ sin: 'cow', plu: 'cows', cal:'herd', abs: false},
+	{ sin: 'mink', plu: 'minks', abs: false},
+	{ sin: 'sheep', plu: 'sheep', abs: false},
+	{ sin: 'hen', plu: 'hens', abs: false},
+	{ sin: 'chicken', plu: 'chickens', abs: false},
+	{ sin: 'rooster', plu: 'roosters', abs: false},
+	{ sin: 'pig', plu: 'pigs', abs: false},
+	{ sin: 'snake', plu: 'snakes', abs: false},
+	{ sin: 'elephant', plu: 'elephants', abs: false},
+	{ sin: 'giraffe', plu: 'giraffes', abs: false},
+	{ sin: 'bird', plu: 'birds', abs: false},
 	{ sin: 'air'}
 ]
 

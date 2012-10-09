@@ -7,7 +7,7 @@ reverse([], Acc, Out) :-
         
 %Interface
 atomize(X, Out) :-
-        atomize(X, [], [], Out).
+        atomize(X, [], [], Out), !.
 %Return result
 atomize([], [], WA, Out) :-
         reverse(WA, Out).
