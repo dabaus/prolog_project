@@ -1,5 +1,6 @@
-:- consult('data/data.pro'). 				% Load word and relationship data.
-:- consult('grammar/wordAssociations.pro').	% Load word and relationship rules.
+:- consult('grammar/wordAssociations.pro').	% Load word grammar rules.
+:- consult('grammar/wordRelationships.pro').    % Load word relationship rules.
+:- consult('data/data.pro'). 			% Load word and relationship data.
 
 :- consult('processing/atomize.pro').	% Convert string into list of atoms.
 :- consult('processing/statement.pro').	% Evaluate and process statements.

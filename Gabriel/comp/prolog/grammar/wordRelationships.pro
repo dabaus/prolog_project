@@ -1,8 +1,15 @@
+:- multifile user:child_of/2, user:give/3, user:make/2.
+:- dynamic user:child_of/2, user:give/3, user:make/2.
+
 /* Establish relationships with:
- * child_of(Child, Parent)
+ * child_of(Parent, Child)
  * give(Owner, Num, Obj)
  * make(Obj, Attr)
  */
+
+child_of(parent, child).
+give(reality, 1, universe).
+make(universe, infinite).
 
 % IS-A RELATIONSHIPS
 is_a(Child, Parent) :- child_of(Parent, Child).

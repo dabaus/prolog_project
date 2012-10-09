@@ -1,11 +1,4 @@
-% reverse(InputList, ReversedList)
-% Reverses a list.
-reverse(X, Out) :-
-        reverse(X, [], Out).
-reverse([X|Xt], Acc, Out) :-
-        reverse(Xt, [X|Acc], Out).
-reverse([], Acc, Out) :-
-        Out = Acc.
+:- use_module(library(lists)).
 
 % atomize(InputString, ListOfTokens)
 % Turns a space-sparated string into a series of atoms
