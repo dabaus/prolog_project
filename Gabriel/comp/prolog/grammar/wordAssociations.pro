@@ -1,4 +1,5 @@
 :- use_module(library(between)).
+:- use_module(library(lists)).
 
 /* ----- VERB FUNCTIONS ----- */
 
@@ -38,7 +39,7 @@ get_statement_object([Th|Tt], Out) :-
 	transitive_verb(Th),
 	Out = Tt.
 get_statement_object([_|Tt], Out) :-
-	get_object(Tt, Out).
+	get_statement_object(Tt, Out).
 
 % get_statement_subject(ListOfTokens, SubjectOfStatement)
 % Takes a list of tokens interpreted as a sentence and identifies what segment
@@ -55,6 +56,39 @@ get_statement_subject([Th|Tt], Acc, Subject) :-
 is_object_adjective([Obj]) :-
 	adjective(Obj).
 
+is_object_pronoun([Obj]) :-
+	pronoun(Obj).
 
+is_object_noun([Obj]) :-
+	noun(Obj).
+
+get_noun_phrase_core(Tokens, Core) :-
+	length(Tokens, L),
+	((L is 1 -> (
+                (
+	              (is_object_noun(Tokens) -> get_noun_root(Tokens, Core));
+	              (is_object_pronoun(Tokens) -> get_pronoun_equivalent(Tokens, Core))
+                )
+	));
+	(L is 2 -> (
+                nth1(2, Tokens, Core)
+        ));
+	(L is 3 -> (
+                nth1(3, Tokens, Core)
+        ))).
 
 /* ----- ADJECTIVE ----- */
+
+/* ----- NOUN ----- */
+get_noun_root([Derived], Root) :-
+	(plural_noun(Derived) -> plural_of(Root, Derived));
+	(collective_noun(Derived) -> collective_of(Root, Derived));
+	(plural_collective_noun(Derived) -> plural_collective_of(Root, Derived)).
+
+/* ----- PRONOUN ----- */
+get_pronoun_equivalent([Pronoun], Equiv) :-
+	(Pronoun == i -> Equiv = user);
+	(Pronoun == you -> Equiv = protalk);
+	Equiv = someoneelse.
+
+

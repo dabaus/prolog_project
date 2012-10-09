@@ -1,5 +1,5 @@
 var nouns = [
-	{ sin: 'air', abs: true},
+	{ sin: 'air', abs: false},
 	{ sin: 'anger', abs: true},
 	{ sin: 'animal', plu: 'animals', abs: false},
 	{ sin: 'apple', plu: 'apples', abs: false},
@@ -20,7 +20,7 @@ var nouns = [
 	{ sin: 'captain', plu: 'captains', abs: false},
 	{ sin: 'car', plu: 'cars', abs: false},
 	{ sin: 'case', plu: 'cases', abs: false},
-	{ sin: 'cat', plu: 'cats', col: 'clowder', abs: false},
+	{ sin: 'cat', plu: 'cats', col: 'clowder', colp: 'clowders', abs: false},
 	{ sin: 'century', plu: 'centuries', abs: true},
 	{ sin: 'chair', plu: 'chairs', abs: false},
 	{ sin: 'chest', plu: 'chests', abs: false},
@@ -28,10 +28,10 @@ var nouns = [
 	{ sin: 'child', plu: 'children', abs: false},
 	{ sin: 'company', plu: 'companies', abs: false},
 	{ sin: 'computer', plu: 'computers', abs: false},
-	{ sin: 'cow', plu: 'cows', cal:'herd', abs: false},
+	{ sin: 'cow', plu: 'cows', col:'herd', colp:'herds', abs: false},
 	{ sin: 'day', plu: 'days', abs: true},
 	{ sin: 'dog', plu: 'dogs', abs: false},
-	{ sin: 'duck', plu: 'ducks', col: 'flock', abs: false},
+	{ sin: 'duck', plu: 'ducks', col: 'flock', colp: 'flocks', abs: false},
 	{ sin: 'ear', plu: 'ears', abs: false},
 	{ sin: 'elephant', plu: 'elephants', abs: false},
 	{ sin: 'eukaryote', plu: 'eukaryotes', abs: false},
@@ -160,7 +160,7 @@ attributes = [
 	{ obj: 'banana', attr: ['yellow', 'green', 'brown', 'small'] },
 	{ obj: 'bear', attr: ['strong', 'black', 'brown'] },
 	{ obj: 'car', attr: ['fast', 'heavy'] },
-	{ obj: 'child', attr: ['young'] },
+	{ obj: 'child', attr: ['young', 'small'] },
 	{ obj: 'orange', attr: ['orange', 'small'] },
 	{ obj: 'pear', attr: ['green', 'small'] },
 
@@ -233,7 +233,6 @@ function processAdjectives() {
 	outputString += 'adjective(X) :- comparative_adjective(X).\n';
 	outputString += 'adjective(X) :- superlative_adjective(X).\n';
 	
-
 	for (var i = 0; i < adjectives.length; i++){
 		outputString += 'adjective(' + adjectives[i].pos + ').\n';
 		if (typeof adjectives[i].com !== 'undefined') {
@@ -272,31 +271,37 @@ function processVerbs() {
 	}
 	return outputString;
 }
-			
 
 function processNouns() {
 	var outputString = '';
 	
-	outputString += ':- discontiguous noun/1, plural_of/2, is_countable/1, collective_of/2, collective_noun/1, is_collective/1, plural_noun/1.\n';
+	outputString += ':- discontiguous noun/1, plural_of/2, plural_noun/2, is_countable/1, ' +
+	'collective_of/2, collective_noun/1, is_collective/1, plural_noun/1, plural_collective_noun/1,' +
+	'plural_collective_of/2.\n';
 	
 	for (var i = 0; i < nouns.length; i++) {
 		if (typeof nouns[i].sin !== 'undefined') {
 			outputString += "noun(" + nouns[i].sin + ").\n";
+
 			if (typeof nouns[i].plu !== 'undefined') {
-				outputString += "plural_of(" + nouns[i].sin + ", " + nouns[i].plu + ").\n";
-				outputString += "noun(" + nouns[i].plu + ").\n";
 				outputString += "is_countable(" + nouns[i].sin + ").\n";
+				outputString += "noun(" + nouns[i].plu + ").\n";
+				outputString += "plural_of(" + nouns[i].sin + ", " + nouns[i].plu + ").\n";
+				outputString += "plural_noun(" + nouns[i].plu + ").\n";
 			}
 
 			if (typeof nouns[i].col !== 'undefined') {
-				outputString += "collective_of(" + nouns[i].sin + ", " + nouns[i].col + ").\n";
-				outputString += "noun(" + nouns[i].col + ").\n";
 				outputString += "is_collective(" + nouns[i].col + ").\n";
+				outputString += "noun(" + nouns[i].col + ").\n";
+				outputString += "collective_of(" + nouns[i].sin + ", " + nouns[i].col + ").\n";
+				outputString += "collective_noun(" + nouns[i].col + ").\n";
 
 				if (typeof nouns[i].colp !== 'undefined') {
-					outputString += "plural_of(" + nouns[i].col + ", " + nouns[i].colp + ").\n";
-					outputString += "noun(" + nouns[i].colp + ").\n";
 					outputString += "is_collective(" + nouns[i].colp + ").\n";
+					outputString += "noun(" + nouns[i].colp + ").\n";
+					outputString += "plural_of(" + nouns[i].col + ", " + nouns[i].colp + ").\n";
+					outputString += "plural_collective_of(" + nouns[i].sin + ", " + nouns[i].colp + ").\n";
+					outputString += "plural_collective_noun(" + nouns[i].colp + ").\n";
 				}			
 			}
 		}
@@ -307,15 +312,13 @@ function processNouns() {
 
 function processChildOfRelationships() {
 	var outputString = '';
-	
+	outputString += ':- multifile child_of/2.\n';
 	outputString += ':- discontiguous child_of/2.\n';
 	
 	for (var i = 0; i < items.length; i++) {
-		if (typeof items[i].name !== 'undefined') {
-			if (typeof items[i].children !== 'undefined') {
-				for (var c = 0; c < items[i].children.length; c++) {
-					outputString += 'child_of('+ items[i].name + ', ' + items[i].children[c] +').\n';
-				}
+		if (typeof items[i].name !== 'undefined' && typeof items[i].children !== 'undefined') {
+			for (var c = 0; c < items[i].children.length; c++) {
+				outputString += 'child_of('+ items[i].name + ', ' + items[i].children[c] +').\n';
 			}
 		}
 	}	
@@ -324,16 +327,13 @@ function processChildOfRelationships() {
 
 function processGiveRelationships() {
 	var outputString = '';
-	
+
+	outputString += ':- multifile give/3.\n';
 	outputString += ':- discontiguous give/3.\n';
 	
 	for (var i = 0; i < ownerships.length; i++) {
-		if (typeof ownerships[i].owner !== 'undefined') {
-			if (typeof ownerships[i].num !== 'undefined') {
-				if (typeof ownerships[i].obj !== 'undefined') {
-					outputString += 'give('+ ownerships[i].owner + ', ' + ownerships[i].num + ', ' + ownerships[i].obj + ').\n';
-				}
-			}
+		if (typeof ownerships[i].owner !== 'undefined' && typeof ownerships[i].num !== 'undefined' && typeof ownerships[i].obj !== 'undefined') {
+			outputString += 'give('+ ownerships[i].owner + ', ' + ownerships[i].num + ', ' + ownerships[i].obj + ').\n';
 		}
 	}	
 	return outputString;
@@ -342,14 +342,13 @@ function processGiveRelationships() {
 function processMakeRelationships() {
 	var outputString = '';
 	
+	outputString += ':- multifile make/2.\n';
 	outputString += ':- discontiguous make/2.\n';
 	
 	for (var i = 0; i < attributes.length; i++) {
-		if (typeof attributes[i].obj !== 'undefined') {
-			if (typeof attributes[i].attr !== 'undefined') {
-				for (var c = 0; c < attributes[i].attr.length; c++) {
-					outputString += 'make('+ attributes[i].obj + ', ' + attributes[i].attr[c] +').\n';
-				}
+		if (typeof attributes[i].obj !== 'undefined' && typeof attributes[i].attr !== 'undefined') {
+			for (var c = 0; c < attributes[i].attr.length; c++) {
+				outputString += 'make('+ attributes[i].obj + ', ' + attributes[i].attr[c] +').\n';
 			}
 		}
 	}	
