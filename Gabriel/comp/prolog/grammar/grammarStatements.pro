@@ -9,6 +9,7 @@ noun_phrase --> determiner, adjective, noun.
 verb_phrase --> transitive_verb, noun_phrase.
 verb_phrase --> transitive_verb, adjective.
 verb_phrase --> intransitive_verb.
+verb_phrase --> transitive_verb, numeral, noun.
 
 interjection --> [I], {interjection(I)}.
 determiner --> [D], {determiner(D)}.
@@ -17,3 +18,4 @@ adjective --> [A], {adjective(A)}.
 pronoun --> [P], {pronoun(P)}.
 transitive_verb --> [V], {transitive_verb(V)}.
 intransitive_verb --> [V], {intransitive_verb(V)}.
+numeral --> [N], {numeral(N)}.
