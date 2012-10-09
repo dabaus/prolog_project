@@ -182,6 +182,94 @@ plural_of(house, houses).
 plural_noun(houses).
 noun(houses).
 is_countable(house).
+noun(tree).
+plural_of(tree, trees).
+plural_noun(trees).
+noun(trees).
+is_countable(tree).
+noun(horse).
+plural_of(horse, horses).
+plural_noun(horses).
+noun(horses).
+is_countable(horse).
+noun(dog).
+plural_of(dog, dogs).
+plural_noun(dogs).
+noun(dogs).
+is_countable(dog).
+noun(cat).
+plural_of(cat, cats).
+plural_noun(cats).
+noun(cats).
+is_countable(cat).
+collective_of(cat, clowder).
+collective_noun(clowder).
+noun(clowder).
+is_collective(clowder).
+noun(duck).
+plural_of(duck, ducks).
+plural_noun(ducks).
+noun(ducks).
+is_countable(duck).
+collective_of(duck, flock).
+collective_noun(flock).
+noun(flock).
+is_collective(flock).
+noun(cow).
+plural_of(cow, cows).
+plural_noun(cows).
+noun(cows).
+is_countable(cow).
+noun(mink).
+plural_of(mink, minks).
+plural_noun(minks).
+noun(minks).
+is_countable(mink).
+noun(sheep).
+plural_of(sheep, sheep).
+plural_noun(sheep).
+noun(sheep).
+is_countable(sheep).
+noun(hen).
+plural_of(hen, hens).
+plural_noun(hens).
+noun(hens).
+is_countable(hen).
+noun(chicken).
+plural_of(chicken, chickens).
+plural_noun(chickens).
+noun(chickens).
+is_countable(chicken).
+noun(rooster).
+plural_of(rooster, roosters).
+plural_noun(roosters).
+noun(roosters).
+is_countable(rooster).
+noun(pig).
+plural_of(pig, pigs).
+plural_noun(pigs).
+noun(pigs).
+is_countable(pig).
+noun(snake).
+plural_of(snake, snakes).
+plural_noun(snakes).
+noun(snakes).
+is_countable(snake).
+noun(elephant).
+plural_of(elephant, elephants).
+plural_noun(elephants).
+noun(elephants).
+is_countable(elephant).
+noun(giraffe).
+plural_of(giraffe, giraffes).
+plural_noun(giraffes).
+noun(giraffes).
+is_countable(giraffe).
+noun(bird).
+plural_of(bird, birds).
+plural_noun(birds).
+noun(birds).
+is_countable(bird).
 noun(air).
 % Verbs
 :- discontiguous transitive_v/1, intransitive_v/1, conjugation/2.
