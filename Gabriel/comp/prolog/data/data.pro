@@ -116,56 +116,70 @@ superlative_adjective(oldest).
 :- discontiguous noun/1, plural_of/2, is_countable/1, collective_of/1, is_collective/1.
 noun(thing).
 plural_of(thing, things).
+plural_noun(things).
 noun(things).
 is_countable(thing).
 noun(organism).
 plural_of(organism, organisms).
+plural_noun(organisms).
 noun(organisms).
 is_countable(organism).
 noun(prokaryote).
 plural_of(prokaryote, prokaryotes).
+plural_noun(prokaryotes).
 noun(prokaryotes).
 is_countable(prokaryote).
 noun(eukaryote).
 plural_of(eukaryote, eukaryotes).
+plural_noun(eukaryotes).
 noun(eukaryotes).
 is_countable(eukaryote).
 noun(bacterium).
 plural_of(bacterium, bacteria).
+plural_noun(bacteria).
 noun(bacteria).
 is_countable(bacterium).
 noun(archaeon).
 plural_of(archaeon, archaea).
+plural_noun(archaea).
 noun(archaea).
 is_countable(archaeon).
 noun(protist).
 plural_of(protist, protists).
+plural_noun(protists).
 noun(protists).
 is_countable(protist).
 noun(plant).
 plural_of(plant, plants).
+plural_noun(plants).
 noun(plants).
 is_countable(plant).
 noun(fungus).
 plural_of(fungus, fungi).
+plural_noun(fungi).
 noun(fungi).
 is_countable(fungus).
 noun(animal).
 plural_of(animal, animals).
+plural_noun(animals).
 noun(animals).
 is_countable(animal).
 noun(person).
 plural_of(person, persons).
+plural_noun(persons).
 noun(persons).
 is_countable(person).
 collective_of(person, people).
+collective_noun(people).
 noun(people).
 is_collective(people).
-plural_of(people, peoples).
+plural_collective_of(person, peoples).
+plural_collective_noun(peoples).
 noun(peoples).
 is_collective(peoples).
 noun(house).
 plural_of(house, houses).
+plural_noun(houses).
 noun(houses).
 is_countable(house).
 noun(air).

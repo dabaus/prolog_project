@@ -147,17 +147,20 @@ function processNouns() {
 			outputString += "noun(" + nouns[i].sin + ").\n";
 			if (typeof nouns[i].plu !== 'undefined') {
 				outputString += "plural_of(" + nouns[i].sin + ", " + nouns[i].plu + ").\n";
+				outputString += "plural_noun(" + nouns[i].plu + ").\n";
 				outputString += "noun(" + nouns[i].plu + ").\n";
 				outputString += "is_countable(" + nouns[i].sin + ").\n";
 			}
 
 			if (typeof nouns[i].col !== 'undefined') {
 				outputString += "collective_of(" + nouns[i].sin + ", " + nouns[i].col + ").\n";
+				outputString += "collective_noun(" + nouns[i].col + ").\n";
 				outputString += "noun(" + nouns[i].col + ").\n";
 				outputString += "is_collective(" + nouns[i].col + ").\n";
 
 				if (typeof nouns[i].colp !== 'undefined') {
-					outputString += "plural_of(" + nouns[i].col + ", " + nouns[i].colp + ").\n";
+					outputString += "plural_collective_of(" + nouns[i].sin + ", " + nouns[i].colp + ").\n";
+					outputString += "plural_collective_noun(" + nouns[i].colp + ").\n";
 					outputString += "noun(" + nouns[i].colp + ").\n";
 					outputString += "is_collective(" + nouns[i].colp + ").\n";
 				}			

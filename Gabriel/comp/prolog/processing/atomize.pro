@@ -44,18 +44,3 @@ is_space(X) :- X is 32.
 is_dot(X) :- X is 46.
 is_question(X) :- X is 63.
 is_comma(X) :- X is 44.
-
-% lastElem(List, LastElement)
-% Finds the last element in a list 
-last_elem([X], Last) :-
-    Last = X.
-last_elem([_X|Xt], Last) :-
-    last_elem(Xt, Last).
-
-is_question(Tokens, Answer) :-
-    last_elem(Tokens, Last),
-    (is_question(Last) -> Answer = true);
-    Answer = false.
-
-is_statement(_Tokens, Answer) :-
-    Answer = true.

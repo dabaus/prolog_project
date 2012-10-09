@@ -55,6 +55,36 @@ get_statement_subject([Th|Tt], Acc, Subject) :-
 is_object_adjective([Obj]) :-
 	adjective(Obj).
 
+is_object_pronoun([Obj]) :-
+	pronoun(Obj).
+
+is_object_noun([Obj]) :-
+	noun(Obj).
+
+get_noun_phrase_core(Tokens, Core) :-
+	length(Tokens, L),
+	(L == 1 -> (
+		(is_object_noun(Tokens) -> get_noun_root(Tokens, Core));
+		(is_object_pronoun(Tokens) -> get_pronoun_equivalent(Tokens, Core))
+	));
+	(L == 2 -> nth(2, Tokens, Core));
+	(L == 3 -> nth(3, Tokens, Core));
+	Core = fail.
 
 
 /* ----- ADJECTIVE ----- */
+
+/* ----- NOUN ----- */
+get_noun_root([Derived], Root) :-
+	(plural_noun(Derived) -> plural_of(Root, Derived));
+	(collective_noun(Derived) -> collective_of(Root, Derived));
+	(plural_collective_noun(Derived) -> plural_collective_of(Root, Derived));
+	Root = fail.
+
+/* ----- PRONOUN ----- */
+get_pronoun_equivalent([Pronoun], Equiv) :-
+	(Pronoun == i -> Equiv = user);
+	(Pronoun == you -> Equiv = protalk);
+	Equiv = someoneelse.
+
+

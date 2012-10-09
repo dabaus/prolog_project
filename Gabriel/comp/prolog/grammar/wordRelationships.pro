@@ -5,8 +5,8 @@
  */
 
 % IS-A RELATIONSHIPS
-is_a(Child, Parent) :- child_of(Child, Parent).
-is_a(Child, Parent) :- child_of(Child, Mid), is_a(Mid, Parent).
+is_a(Child, Parent) :- child_of(Parent, Child).
+is_a(Child, Parent) :- child_of(Mid, Child), is_a(Parent, Mid).
 
 % HAS-A RELATIONSHIPS
 has(Owner, Num, Obj) :- give(Owner, Num, Obj).
