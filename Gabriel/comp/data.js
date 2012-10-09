@@ -7,7 +7,9 @@ function generate() {
 	outputString += '% Adjectives\n' + dict.genAdjectives() + 
 					'% Nouns\n' + dict.genNouns() + 
 					'% Verbs\n' + dict.genVerbs() + 
-					'% Relationships\n' + dict.genRelationships() +
+					'% Relationships child of\n' + dict.genChildOf() +
+					'% Relationships give\n' + dict.genGive() +
+					'% Relationships make\n' + dict.genMake() +
 					'% Grammar\n' + gram.genGrammar();
 		
 	fs.writeFile("prolog/data/data.pro", outputString, function(err) {

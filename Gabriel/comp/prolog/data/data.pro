@@ -8,12 +8,18 @@ superlative_adjective(angriest).
 adjective(big).
 comparative_adjective(bigger).
 superlative_adjective(biggest).
+adjective(black).
+comparative_adjective(blacker).
+superlative_adjective(blackest).
 adjective(blue).
 comparative_adjective(bluer).
 superlative_adjective(bluest).
 adjective(bright).
 comparative_adjective(brighter).
 superlative_adjective(brightest).
+adjective(brown).
+comparative_adjective(browner).
+superlative_adjective(brownest).
 adjective(cold).
 comparative_adjective(colder).
 superlative_adjective(coldest).
@@ -136,6 +142,10 @@ noun(bacterium).
 plural_of(bacterium, bacteria).
 noun(bacteria).
 is_countable(bacterium).
+noun(banana).
+plural_of(banana, bananas).
+noun(bananas).
+is_countable(banana).
 noun(bear).
 plural_of(bear, bears).
 noun(bears).
@@ -156,6 +166,10 @@ noun(boat).
 plural_of(boat, boats).
 noun(boats).
 is_countable(boat).
+noun(body).
+plural_of(body, bodies).
+noun(bodies).
+is_countable(body).
 noun(book).
 plural_of(book, books).
 noun(books).
@@ -168,6 +182,10 @@ noun(boy).
 plural_of(boy, boys).
 noun(boys).
 is_countable(boy).
+noun(building).
+plural_of(building, buildings).
+noun(buildings).
+is_countable(building).
 noun(captain).
 plural_of(captain, captains).
 noun(captains).
@@ -484,8 +502,28 @@ intransitive_v(be).
 conjugation(have, conj(have, have, has, have, have, have, had, had, had, had, had, had)).
 transitive_v(have).
 intransitive_v(have).
-% Relationships
-:- discontiguous child_of/1.
+% Relationships child of
+:- discontiguous child_of/2.
+child_of(fruit, apple).
+child_of(fruit, pear).
+child_of(fruit, banana).
+child_of(fruit, orange).
+child_of(child, boy).
+child_of(child, girl).
+child_of(animal, mammal).
+child_of(mammal, bear).
+child_of(mammal, cow).
+child_of(mammal, pig).
+child_of(mammal, sheep).
+child_of(mammal, mink).
+child_of(mammal, elephant).
+child_of(mammal, giraffe).
+child_of(building, house).
+child_of(person, man).
+child_of(person, woman).
+child_of(person, child).
+child_of(child, boy).
+child_of(child, girl).
 child_of(thing, organism).
 child_of(organism, prokaryote).
 child_of(organism, eukaryote).
@@ -495,6 +533,37 @@ child_of(eukaryote, protist).
 child_of(eukaryote, plant).
 child_of(eukaryote, fungus).
 child_of(eukaryote, animal).
+% Relationships give
+:- discontiguous give/3.
+give(face, 1, nose).
+give(face, 2, eye).
+give(face, 1, mouth).
+give(head, 1, face).
+give(head, 2, ear).
+give(body, 1, head).
+give(body, 2, arm).
+give(body, 2, leg).
+give(person, 1, body).
+give(body, 1, heart).
+% Relationships make
+:- discontiguous make/2.
+make(apple, red).
+make(apple, green).
+make(apple, small).
+make(banana, yellow).
+make(banana, green).
+make(banana, brown).
+make(banana, small).
+make(bear, strong).
+make(bear, black).
+make(bear, brown).
+make(car, fast).
+make(car, heavy).
+make(child, young).
+make(orange, orange).
+make(orange, small).
+make(pear, green).
+make(pear, small).
 % Grammar
 :- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 determiner(X) :- article(X).
