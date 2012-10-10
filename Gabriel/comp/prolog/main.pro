@@ -1,8 +1,14 @@
-:- consult('processing/atomize.pro').
-:- consult('data/data.pro').
-:- consult('grammar/wordAssociations.pro').
-:- consult('grammar/grammarStatements.pro').
-:- consult('grammar/grammarQuestions.pro').
+:- consult('grammar/wordAssociations.pro').	% Load word grammar rules.
+:- consult('grammar/wordRelationships.pro').    % Load word relationship rules.
+:- consult('grammar/numeral.pro').              % Numbers.
+:- consult('data/data.pro'). 			% Load word and relationship data.
+
+:- consult('processing/atomize.pro').	% Convert string into list of atoms.
+:- consult('processing/statement.pro').	% Evaluate and process statements.
+:- consult('processing/question.pro').	% Evaluate and process questions.
+
+:- consult('grammar/grammarStatements.pro').	% Load statement grammar
+:- consult('grammar/grammarQuestions.pro').		% Load question grammar
 
 sentence(Input, Output) :-
 	atomize(Input, Tokens),
@@ -11,22 +17,6 @@ sentence(Input, Output) :-
 		respond_error(Resp)
 	),
 	atom_codes(Output, Resp).
-
-	
-is_statement(Tokens):-
-	phrase(statement, Tokens).
-
-process_statement(Tokens, Resp) :-
-	(uses_verb(Tokens, be) -> process_assignment(Tokens, Resp));
-	Resp = "This is some other kind of statement.".
-
-process_assignment(Tokens, Resp) :-
-	get_statement_object(Tokens, Object),
-	get_statement_subject(Tokens, Subject),
-	(
-		(is_object_adjective(Object) -> )
-	)
-	Resp = "This is an assignment.".
 
 respond_error(Resp) :-
 	Resp = "This is an error.".

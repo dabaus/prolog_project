@@ -1,5 +1,5 @@
 var nouns = [
-	{ sin: 'air', abs: true},
+	{ sin: 'air', abs: false},
 	{ sin: 'anger', abs: true},
 	{ sin: 'animal', plu: 'animals', abs: false},
 	{ sin: 'apple', plu: 'apples', abs: false},
@@ -20,7 +20,7 @@ var nouns = [
 	{ sin: 'captain', plu: 'captains', abs: false},
 	{ sin: 'car', plu: 'cars', abs: false},
 	{ sin: 'case', plu: 'cases', abs: false},
-	{ sin: 'cat', plu: 'cats', col: 'clowder', abs: false},
+	{ sin: 'cat', plu: 'cats', col: 'clowder', colp: 'clowders', abs: false},
 	{ sin: 'century', plu: 'centuries', abs: true},
 	{ sin: 'chair', plu: 'chairs', abs: false},
 	{ sin: 'chest', plu: 'chests', abs: false},
@@ -28,16 +28,18 @@ var nouns = [
 	{ sin: 'child', plu: 'children', abs: false},
 	{ sin: 'company', plu: 'companies', abs: false},
 	{ sin: 'computer', plu: 'computers', abs: false},
-	{ sin: 'cow', plu: 'cows', cal:'herd', abs: false},
+	{ sin: 'cow', plu: 'cows', col:'herd', colp:'herds', abs: false},
 	{ sin: 'day', plu: 'days', abs: true},
 	{ sin: 'dog', plu: 'dogs', abs: false},
-	{ sin: 'duck', plu: 'ducks', col: 'flock', abs: false},
+	{ sin: 'duck', plu: 'ducks', col: 'flock', colp: 'flocks', abs: false},
 	{ sin: 'ear', plu: 'ears', abs: false},
 	{ sin: 'elephant', plu: 'elephants', abs: false},
+	{ sin: 'extremity', plu: 'extremities', abs: false},
 	{ sin: 'eukaryote', plu: 'eukaryotes', abs: false},
-	{ sin: 'eye', plu: 'eys', abs: false},
+	{ sin: 'eye', plu: 'eyes', abs: false},
 	{ sin: 'face', plu: 'faces', abs: false},
 	{ sin: 'fact', plu: 'facts', abs: false},
+	{ sin: 'feather', plu: 'feathers', abs: false},
 	{ sin: 'fruit', plu: 'fruits', abs: false},
 	{ sin: 'fungus', plu: 'fungi', abs: false},
 	{ sin: 'giraffe', plu: 'giraffes', abs: false},
@@ -53,7 +55,9 @@ var nouns = [
 	{ sin: 'horse', plu: 'horses', abs: false},
 	{ sin: 'house', plu: 'houses', abs: false},
 	{ sin: 'leg', plu: 'legs', abs: false},
+	{ sin: 'lemon', plu: 'lemons', abs: false},
 	{ sin: 'life', plu: 'lives', abs: false},
+	{ sin: 'lion', plu: 'lions', abs: false},
 	{ sin: 'love', abs: true},
 	{ sin: 'man', plu: 'men', abs: false},
 	{ sin: 'mink', plu: 'minks', abs: false},
@@ -77,6 +81,7 @@ var nouns = [
 	{ sin: 'problem', plu: 'problems', abs: false},
 	{ sin: 'prokaryote', plu: 'prokaryotes', abs: false},
 	{ sin: 'protist', plu: 'protists', abs: false},
+	{ sin: 'reptile', plu: 'reptiles', abs: false},
 	{ sin: 'rooster', plu: 'roosters', abs: false},
 	{ sin: 'sheep', plu: 'sheep', abs: false},
 	{ sin: 'snake', plu: 'snakes', abs: false},
@@ -87,9 +92,11 @@ var nouns = [
 	{ sin: 'time', plu: 'times', abs: true},
 	{ sin: 'tree', plu: 'trees', abs: false},
 	{ sin: 'truck', plu: 'trucks', abs: false},
+	{ sin: 'vehicle', plu: 'vehicles', abs: false},
 	{ sin: 'walnut', plu: 'walnuts', abs: false},
 	{ sin: 'way', plu: 'ways', abs: false},
 	{ sin: 'week', plu: 'weeks', abs: true},
+	{ sin: 'wing', plu: 'wings', abs: true},
 	{ sin: 'woman', plu: 'women', abs: false},
 	{ sin: 'work', plu: 'works', abs: false},
 	{ sin: 'world', plu: 'worlds', abs: false},
@@ -97,6 +104,7 @@ var nouns = [
 ]
 
 var adjectives = [
+	{ pos: 'alive'},
 	{ pos: 'angry', com: 'angrier', sup: 'angriest'},
 	{ pos: 'big', com: 'bigger', sup: 'biggest'},
 	{ pos: 'black', com: 'blacker', sup: 'blackest'},
@@ -107,6 +115,8 @@ var adjectives = [
 	{ pos: 'colorful', irr: true},
 	{ pos: 'cool', com: 'cooler', sup: 'coolest'},
 	{ pos: 'crazy', com: 'crazier', sup: 'craziest'},
+	{ pos: 'cute', com: 'cuter', sup: 'cutest'},
+	{ pos: 'dangerous', irr: true},
 	{ pos: 'dark', com: 'darker', sup: 'darkest'},
 	{ pos: 'fast', com: 'faster', sup: 'fastest'},
 	{ pos: 'green', com: 'greener', sup: 'greenest'},
@@ -115,10 +125,12 @@ var adjectives = [
 	{ pos: 'heavy', com: 'heavier', sup: 'heaviest'},
 	{ pos: 'high', com: 'higher', sup: 'highest'},
 	{ pos: 'hot', com: 'hotter', sup: 'hottest'},
+	{ pos: 'juicy', com: 'juicier', sup: 'juiciest'},
 	{ pos: 'large', com: 'larger', sup: 'largest'},
 	{ pos: 'light', com: 'lighter', sup: 'lightest'},
 	{ pos: 'loud', com: 'louder', sup: 'loudest'},
 	{ pos: 'low', com: 'lower', sup: 'lowest'},
+	{ pos: 'long', com: 'longer', sup: 'longest'},
 	{ pos: 'old', com: 'older', sup: 'oldest'},
 	{ pos: 'orange', com: 'oranger', sup: 'orangest'},
 	{ pos: 'quiet', com: 'quieter', sup: 'quietest'},
@@ -126,10 +138,13 @@ var adjectives = [
 	{ pos: 'sad', com: 'sadder', sup: 'saddest'},
 	{ pos: 'shiny', com: 'shinier', sup: 'shiniest'},
 	{ pos: 'slow', com: 'slower', sup: 'slowest'},
+	{ pos: 'short', com: 'shorter', sup: 'shortest'},
 	{ pos: 'small', com: 'smaller', sup: 'smallest'},
 	{ pos: 'smelly', com: 'smellier', sup: 'smelliest'},
 	{ pos: 'soft', com: 'softer', sup: 'softest'},
 	{ pos: 'strong', com: 'stronger', sup: 'strongest'},
+	{ pos: 'sweet', com: 'sweeter', sup: 'sweetest'},
+	{ pos: 'sour', com: 'sourer', sup: 'sourest'},
 	{ pos: 'tall', com: 'taller', sup: 'tallest'},
 	{ pos: 'tiny', com: 'tinier', sup: 'tiniest'},
 	{ pos: 'warm', com: 'warmer', sup: 'warmest'},
@@ -159,10 +174,15 @@ attributes = [
 	{ obj: 'apple', attr: ['red', 'green', 'small'] },
 	{ obj: 'banana', attr: ['yellow', 'green', 'brown', 'small'] },
 	{ obj: 'bear', attr: ['strong', 'black', 'brown'] },
+	{ obj: 'extremity', attr: ['long'] },
 	{ obj: 'car', attr: ['fast', 'heavy'] },
-	{ obj: 'child', attr: ['young'] },
+	{ obj: 'child', attr: ['young', 'small'] },
 	{ obj: 'orange', attr: ['orange', 'small'] },
 	{ obj: 'pear', attr: ['green', 'small'] },
+	{ obj: 'fruit', attr: ['juicy'] },
+	{ obj: 'berry', attr: ['sweet'] },
+	{ obj: 'organism', attr: ['alive'] },
+	{ obj: 'citrus', attr: ['sour'] },
 
 ]
 
@@ -176,13 +196,23 @@ ownerships = [
 	{ owner: 'body', num: 2, obj: 'arm' },
 	{ owner: 'body', num: 2, obj: 'leg' },
 	{ owner: 'person', num: 1, obj: 'body' },
-	{ owner: 'body', num: 1, obj: 'heart' }
+	{ owner: 'body', num: 1, obj: 'heart' },
+	{ owner: 'bird', num: 1, obj: 'feather' },
+	{ owner: 'bird', num: 1, obj: 'wing' }
 ]
 
 items = [
 	{
 		name: 'fruit',
-		children: ['apple', 'pear', 'banana', 'orange']
+		children: ['apple', 'pear', 'berry', 'citrus']
+	},
+	{
+		name: 'citrus',
+		children: ['orange', 'lemon', ]
+	},
+	{
+		name: 'berry',
+		children: ['banana', 'avocado', 'blueberry']
 	},	
 	{
 		name: 'child',
@@ -190,13 +220,32 @@ items = [
 	},	
 	{
 		name: 'animal',
-		children: ['mammal']
+		children: ['mammal', 'bird', 'reptile']
+	},
+	{
+		name: 'extremity',
+		children: ['arm', 'leg']
+	},
+	{
+		name: 'feline',
+		children: ['cat', 'lion']
+	},
+	{
+		name: 'canine',
+		children: ['dog']
+	},
+	{
+		name: 'bird',
+		children: ['hen', 'duck', 'rooster']
 	},
 	{
 		name: 'mammal',
-		children: ['bear', 'cow', 'pig', 'sheep', 'mink', 'elephant', 'giraffe']
-	},	
-
+		children: ['bear', 'cow', 'pig', 'sheep', 'mink', 'elephant', 'giraffe', 'feline', 'canine']
+	},
+	{
+		name: 'reptile',
+		children: ['snake']
+	},
 	{
 		name: 'building',
 		children: ['house']
@@ -204,6 +253,10 @@ items = [
 	{
 		name: 'person',
 		children: ['man', 'woman', 'child']
+	},
+	{
+		name: 'vehicle',
+		children: ['truck', 'car', 'plane']
 	},
 	{
 		name: 'child',
@@ -233,7 +286,6 @@ function processAdjectives() {
 	outputString += 'adjective(X) :- comparative_adjective(X).\n';
 	outputString += 'adjective(X) :- superlative_adjective(X).\n';
 	
-
 	for (var i = 0; i < adjectives.length; i++){
 		outputString += 'adjective(' + adjectives[i].pos + ').\n';
 		if (typeof adjectives[i].com !== 'undefined') {
@@ -272,31 +324,37 @@ function processVerbs() {
 	}
 	return outputString;
 }
-			
 
 function processNouns() {
 	var outputString = '';
 	
-	outputString += ':- discontiguous noun/1, plural_of/2, is_countable/1, collective_of/2, collective_noun/1, is_collective/1, plural_noun/1.\n';
+	outputString += ':- discontiguous noun/1, plural_of/2, plural_noun/2, is_countable/1, ' +
+	'collective_of/2, collective_noun/1, is_collective/1, plural_noun/1, plural_collective_noun/1,' +
+	'plural_collective_of/2.\n';
 	
 	for (var i = 0; i < nouns.length; i++) {
 		if (typeof nouns[i].sin !== 'undefined') {
 			outputString += "noun(" + nouns[i].sin + ").\n";
+
 			if (typeof nouns[i].plu !== 'undefined') {
-				outputString += "plural_of(" + nouns[i].sin + ", " + nouns[i].plu + ").\n";
-				outputString += "noun(" + nouns[i].plu + ").\n";
 				outputString += "is_countable(" + nouns[i].sin + ").\n";
+				outputString += "noun(" + nouns[i].plu + ").\n";
+				outputString += "plural_of(" + nouns[i].sin + ", " + nouns[i].plu + ").\n";
+				outputString += "plural_noun(" + nouns[i].plu + ").\n";
 			}
 
 			if (typeof nouns[i].col !== 'undefined') {
-				outputString += "collective_of(" + nouns[i].sin + ", " + nouns[i].col + ").\n";
-				outputString += "noun(" + nouns[i].col + ").\n";
 				outputString += "is_collective(" + nouns[i].col + ").\n";
+				outputString += "noun(" + nouns[i].col + ").\n";
+				outputString += "collective_of(" + nouns[i].sin + ", " + nouns[i].col + ").\n";
+				outputString += "collective_noun(" + nouns[i].col + ").\n";
 
 				if (typeof nouns[i].colp !== 'undefined') {
-					outputString += "plural_of(" + nouns[i].col + ", " + nouns[i].colp + ").\n";
-					outputString += "noun(" + nouns[i].colp + ").\n";
 					outputString += "is_collective(" + nouns[i].colp + ").\n";
+					outputString += "noun(" + nouns[i].colp + ").\n";
+					outputString += "plural_of(" + nouns[i].col + ", " + nouns[i].colp + ").\n";
+					outputString += "plural_collective_of(" + nouns[i].sin + ", " + nouns[i].colp + ").\n";
+					outputString += "plural_collective_noun(" + nouns[i].colp + ").\n";
 				}			
 			}
 		}
@@ -307,15 +365,13 @@ function processNouns() {
 
 function processChildOfRelationships() {
 	var outputString = '';
-	
+	outputString += ':- multifile child_of/2.\n';
 	outputString += ':- discontiguous child_of/2.\n';
 	
 	for (var i = 0; i < items.length; i++) {
-		if (typeof items[i].name !== 'undefined') {
-			if (typeof items[i].children !== 'undefined') {
-				for (var c = 0; c < items[i].children.length; c++) {
-					outputString += 'child_of('+ items[i].name + ', ' + items[i].children[c] +').\n';
-				}
+		if (typeof items[i].name !== 'undefined' && typeof items[i].children !== 'undefined') {
+			for (var c = 0; c < items[i].children.length; c++) {
+				outputString += 'child_of('+ items[i].name + ', ' + items[i].children[c] +').\n';
 			}
 		}
 	}	
@@ -324,16 +380,13 @@ function processChildOfRelationships() {
 
 function processGiveRelationships() {
 	var outputString = '';
-	
+
+	outputString += ':- multifile give/3.\n';
 	outputString += ':- discontiguous give/3.\n';
 	
 	for (var i = 0; i < ownerships.length; i++) {
-		if (typeof ownerships[i].owner !== 'undefined') {
-			if (typeof ownerships[i].num !== 'undefined') {
-				if (typeof ownerships[i].obj !== 'undefined') {
-					outputString += 'give('+ ownerships[i].owner + ', ' + ownerships[i].num + ', ' + ownerships[i].obj + ').\n';
-				}
-			}
+		if (typeof ownerships[i].owner !== 'undefined' && typeof ownerships[i].num !== 'undefined' && typeof ownerships[i].obj !== 'undefined') {
+			outputString += 'give('+ ownerships[i].owner + ', ' + ownerships[i].num + ', ' + ownerships[i].obj + ').\n';
 		}
 	}	
 	return outputString;
@@ -342,14 +395,13 @@ function processGiveRelationships() {
 function processMakeRelationships() {
 	var outputString = '';
 	
+	outputString += ':- multifile make/2.\n';
 	outputString += ':- discontiguous make/2.\n';
 	
 	for (var i = 0; i < attributes.length; i++) {
-		if (typeof attributes[i].obj !== 'undefined') {
-			if (typeof attributes[i].attr !== 'undefined') {
-				for (var c = 0; c < attributes[i].attr.length; c++) {
-					outputString += 'make('+ attributes[i].obj + ', ' + attributes[i].attr[c] +').\n';
-				}
+		if (typeof attributes[i].obj !== 'undefined' && typeof attributes[i].attr !== 'undefined') {
+			for (var c = 0; c < attributes[i].attr.length; c++) {
+				outputString += 'make('+ attributes[i].obj + ', ' + attributes[i].attr[c] +').\n';
 			}
 		}
 	}	
