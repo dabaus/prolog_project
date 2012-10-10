@@ -1,0 +1,158 @@
+<html>
+	<head>
+		<script type="text/javascript" src="/js/jquery.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="/js/comms.js"></script>
+
+		<style type="text/css">
+			@font-face {
+				font-family: Futura;
+				font-weight: 700;
+				src: url('/fonts/FuturaStd-Bold.otf');
+			}
+			@font-face {
+				font-family: Futura;
+				font-weight: 400;
+				src: url('/fonts/FuturaStd-Medium.otf');
+			}
+			@font-face {
+				font-family: Futura;
+				font-weight: 600;
+				src: url('/fonts/FuturaStd-Heavy.otf');
+			}
+			* {
+				margin: 0px;
+				padding: 0px;
+				border: none;
+				background: none;
+			}
+			body {
+				padding-top: 20px;
+				background: white;
+			}
+			#container {
+				width: 812px;
+				margin: 0 auto;
+			}
+			#output {
+				margin: 0 auto;
+				width: 804px;
+				padding: 4px;
+			}
+			#console, #pretty {
+				position: relative;
+				display: inline-block;
+				width: 400px;
+				height: 400px;
+				box-shadow: inset 0px 0px 0px 1px rgba(0,0,0,0.3);
+				vertical-align: top;
+				padding-top: 36px;
+				overflow: scroll;
+			}
+			#input {
+				width: 804px;
+				padding: 0px 4px 0px 4px;
+			}
+			h1 {
+				font-family: Futura, Helvetica, Arial, sans-serif;
+				font-weight: bold;
+				font-size: 42px;
+				padding-left: 4px;
+			}
+			h2 {
+				position: absolute;
+				top: 0;
+				left: 0;
+				font-family: Futura, Helvetica, Arial, sans-serif;
+				font-weight: normal;
+				font-size: 17px;
+				padding: 8px 10px 6px 10px;
+				box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+				background: rgba(0,0,0,0.02);
+				width: 380px;
+
+			}
+			#input input {
+				height: 27px;
+				padding: 3px 10px 5px 10px;
+				font-size: 15px;
+				border: solid 1px rgba(0,0,0,0.3);
+				vertical-align: top;
+			}
+			#input input[type='button'] {
+				font-family: Futura, Helvetica, Arial, sans-serif;
+				font-weight: 400;
+			}
+			#input input[type='button'].option {
+				padding-left: 28px;
+				float: right;
+				margin-left: 4px;
+			}
+			#input input[type='button'].option.press {
+				background: url('/img/radio_press.png') no-repeat left center, rgba(0,0,0,0.12);
+			}
+			#input input[type='button'].submit {
+				color: white;
+				background: #0A99EF;
+				font-weight: 600;
+			}
+			#input input[type='button'].submit:hover {
+				color: white;
+				background: #33ADF7;
+			}
+			#input input[type='button'].submit:active {
+				color: white;
+				background: #0988D5;
+			}
+			#input input[type='button'].option.up {
+				background: url('/img/radio_up.png') no-repeat left center, rgba(0,0,0,0.06);
+			}
+			#input input[type='button'].option:hover {
+				box-shadow: inset 0px 0px 0px 1px rgba(60, 180, 255, 1);
+			}
+			#input input[type='button'].option:active {
+				box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.7);
+			}
+			#input input[type='text'] {
+				width: 460px;
+			}
+			.console-entry {
+				margin: 5px;
+				font-family: Menlo, Consolas, monospace;
+				font-size: 12px;
+			}
+			.local, .rem {
+				font-family: Helvetica, Arial, sans-serif;
+				font-size: 12px; 
+			}
+			.local {
+				background: rgba(255, 200, 200, 0.3);
+			}
+			.rem {
+				background: rgba(200, 220, 255, 0.3);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="container">
+			<h1>Protalk</h1>
+			<div id="output">
+				<div id="pretty">
+					<h2>Conversation</h2>
+				</div>
+				<div id="console">
+					<h2>Console input/output</h2>
+				</div>
+			</div>
+			<div id="input">
+				<input type="text" id="write" placeholder="write here">
+				<input type="button" id="submit" value="submit" class="submit">
+				<input type="button" id='radioConsole' value="to console" class="option" onclick="toggleInput();">
+				<input type="button" id='radioChat' value="as conversation" class="option" onclick="toggleInput();">
+			</div>
+		</div>
+
+
+	</body>
+</html>

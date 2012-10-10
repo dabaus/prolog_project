@@ -2,6 +2,7 @@
 :- discontiguous adjective/1, comparative_adjective/1, superlative_adjective/1, non_gradable_adjective/1.
 adjective(X) :- comparative_adjective(X).
 adjective(X) :- superlative_adjective(X).
+adjective(alive).
 adjective(angry).
 comparative_adjective(angrier).
 superlative_adjective(angriest).
@@ -31,6 +32,11 @@ superlative_adjective(coolest).
 adjective(crazy).
 comparative_adjective(crazier).
 superlative_adjective(craziest).
+adjective(cute).
+comparative_adjective(cuter).
+superlative_adjective(cutest).
+adjective(dangerous).
+non_gradable_adjective(dangerous).
 adjective(dark).
 comparative_adjective(darker).
 superlative_adjective(darkest).
@@ -55,6 +61,9 @@ superlative_adjective(highest).
 adjective(hot).
 comparative_adjective(hotter).
 superlative_adjective(hottest).
+adjective(juicy).
+comparative_adjective(juicier).
+superlative_adjective(juiciest).
 adjective(large).
 comparative_adjective(larger).
 superlative_adjective(largest).
@@ -67,6 +76,9 @@ superlative_adjective(loudest).
 adjective(low).
 comparative_adjective(lower).
 superlative_adjective(lowest).
+adjective(long).
+comparative_adjective(longer).
+superlative_adjective(longest).
 adjective(old).
 comparative_adjective(older).
 superlative_adjective(oldest).
@@ -88,6 +100,9 @@ superlative_adjective(shiniest).
 adjective(slow).
 comparative_adjective(slower).
 superlative_adjective(slowest).
+adjective(short).
+comparative_adjective(shorter).
+superlative_adjective(shortest).
 adjective(small).
 comparative_adjective(smaller).
 superlative_adjective(smallest).
@@ -100,6 +115,12 @@ superlative_adjective(softest).
 adjective(strong).
 comparative_adjective(stronger).
 superlative_adjective(strongest).
+adjective(sweet).
+comparative_adjective(sweeter).
+superlative_adjective(sweetest).
+adjective(sour).
+comparative_adjective(sourer).
+superlative_adjective(sourest).
 adjective(tall).
 comparative_adjective(taller).
 superlative_adjective(tallest).
@@ -314,6 +335,11 @@ is_countable(elephant).
 noun(elephants).
 plural_of(elephant, elephants).
 plural_noun(elephants).
+noun(extremity).
+is_countable(extremity).
+noun(extremities).
+plural_of(extremity, extremities).
+plural_noun(extremities).
 noun(eukaryote).
 is_countable(eukaryote).
 noun(eukaryotes).
@@ -321,9 +347,9 @@ plural_of(eukaryote, eukaryotes).
 plural_noun(eukaryotes).
 noun(eye).
 is_countable(eye).
-noun(eys).
-plural_of(eye, eys).
-plural_noun(eys).
+noun(eyes).
+plural_of(eye, eyes).
+plural_noun(eyes).
 noun(face).
 is_countable(face).
 noun(faces).
@@ -334,6 +360,11 @@ is_countable(fact).
 noun(facts).
 plural_of(fact, facts).
 plural_noun(facts).
+noun(feather).
+is_countable(feather).
+noun(feathers).
+plural_of(feather, feathers).
+plural_noun(feathers).
 noun(fruit).
 is_countable(fruit).
 noun(fruits).
@@ -405,11 +436,21 @@ is_countable(leg).
 noun(legs).
 plural_of(leg, legs).
 plural_noun(legs).
+noun(lemon).
+is_countable(lemon).
+noun(lemons).
+plural_of(lemon, lemons).
+plural_noun(lemons).
 noun(life).
 is_countable(life).
 noun(lives).
 plural_of(life, lives).
 plural_noun(lives).
+noun(lion).
+is_countable(lion).
+noun(lions).
+plural_of(lion, lions).
+plural_noun(lions).
 noun(love).
 noun(man).
 is_countable(man).
@@ -522,6 +563,11 @@ is_countable(protist).
 noun(protists).
 plural_of(protist, protists).
 plural_noun(protists).
+noun(reptile).
+is_countable(reptile).
+noun(reptiles).
+plural_of(reptile, reptiles).
+plural_noun(reptiles).
 noun(rooster).
 is_countable(rooster).
 noun(roosters).
@@ -572,6 +618,11 @@ is_countable(truck).
 noun(trucks).
 plural_of(truck, trucks).
 plural_noun(trucks).
+noun(vehicle).
+is_countable(vehicle).
+noun(vehicles).
+plural_of(vehicle, vehicles).
+plural_noun(vehicles).
 noun(walnut).
 is_countable(walnut).
 noun(walnuts).
@@ -587,6 +638,11 @@ is_countable(week).
 noun(weeks).
 plural_of(week, weeks).
 plural_noun(weeks).
+noun(wing).
+is_countable(wing).
+noun(wings).
+plural_of(wing, wings).
+plural_noun(wings).
 noun(woman).
 is_countable(woman).
 noun(women).
@@ -620,11 +676,26 @@ intransitive_v(have).
 :- discontiguous child_of/2.
 child_of(fruit, apple).
 child_of(fruit, pear).
-child_of(fruit, banana).
-child_of(fruit, orange).
+child_of(fruit, berry).
+child_of(fruit, citrus).
+child_of(citrus, orange).
+child_of(citrus, lemon).
+child_of(berry, banana).
+child_of(berry, avocado).
+child_of(berry, blueberry).
 child_of(child, boy).
 child_of(child, girl).
 child_of(animal, mammal).
+child_of(animal, bird).
+child_of(animal, reptile).
+child_of(extremity, arm).
+child_of(extremity, leg).
+child_of(feline, cat).
+child_of(feline, lion).
+child_of(canine, dog).
+child_of(bird, hen).
+child_of(bird, duck).
+child_of(bird, rooster).
 child_of(mammal, bear).
 child_of(mammal, cow).
 child_of(mammal, pig).
@@ -632,10 +703,16 @@ child_of(mammal, sheep).
 child_of(mammal, mink).
 child_of(mammal, elephant).
 child_of(mammal, giraffe).
+child_of(mammal, feline).
+child_of(mammal, canine).
+child_of(reptile, snake).
 child_of(building, house).
 child_of(person, man).
 child_of(person, woman).
 child_of(person, child).
+child_of(vehicle, truck).
+child_of(vehicle, car).
+child_of(vehicle, plane).
 child_of(child, boy).
 child_of(child, girl).
 child_of(thing, organism).
@@ -660,6 +737,8 @@ give(body, 2, arm).
 give(body, 2, leg).
 give(person, 1, body).
 give(body, 1, heart).
+give(bird, 1, feather).
+give(bird, 1, wing).
 % Relationships make
 :- multifile make/2.
 :- discontiguous make/2.
@@ -673,6 +752,7 @@ make(banana, small).
 make(bear, strong).
 make(bear, black).
 make(bear, brown).
+make(extremity, long).
 make(car, fast).
 make(car, heavy).
 make(child, young).
@@ -681,6 +761,10 @@ make(orange, orange).
 make(orange, small).
 make(pear, green).
 make(pear, small).
+make(fruit, juicy).
+make(berry, sweet).
+make(organism, alive).
+make(citrus, sour).
 % Grammar
 :- discontiguous article/1, determiner/1, pronoun/1, personal_pronoun/1.
 determiner(X) :- article(X).

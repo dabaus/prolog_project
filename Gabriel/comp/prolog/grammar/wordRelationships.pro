@@ -13,7 +13,7 @@ make(universe, infinite).
 
 % IS-A RELATIONSHIPS
 is_a(Child, Parent) :- child_of(Parent, Child).
-is_a(Child, Parent) :- child_of(Mid, Child), is_a(Parent, Mid).
+is_a(Child, Parent) :- child_of(Mid, Child), child_of(Parent, Mid).
 
 % HAS-A RELATIONSHIPS
 has(Owner, Num, Obj) :- give(Owner, Num, Obj).
