@@ -1,7 +1,20 @@
-:- consult('atomize.pl').
-:- consult('../../Gabriel/comp/prolog/data/data.pro').
-:- consult('../../Gabriel/comp/prolog/grammar/wordAssociations.pro').
 
+/*
+* Author: Jakob Stengård
+* 
+* This is an implementation of the bot using parse trees.
+* It is incomplete. 
+* 
+* Example statements that do work:
+* "the cat is black"
+* "what is the cat"                 
+*/
+
+:- consult('atomize.pl').
+:- consult('data/data.pro').
+:- consult('grammar/wordAssociations.pro').
+
+/* DCG used to build a parse tree of the input sentece */
 sentence(X) --> query(X); statement(X); greeting(X).
 
 greeting((g, [G])) --> interjection_phrase(G). 
@@ -30,10 +43,8 @@ adjective((ad, X)) --> [X], {adjective(X)}.
 pronoun((p, X)) --> [X], {pronoun(X)}.
 quantity((q, X)) --> [X], {quantity(X)}.
 
-%main(Out) :- phrase(sentence(s(_,vp(loves,np(every,woman)))), Out).
-
+% Some extra ruels that aren't in gabriel's grammar.
 interogative(what).
-
 quantity(X) :-
         number(X).
 
@@ -43,34 +54,21 @@ transVerb(Conj) :-
 intransVerb(Conj) :-
         getVerb(Inf, Conj),
         intransitive_v(Inf).
-
-readStatement :-
-        write('Statement:'),
-        read_line(X),
-        atomize(X, Atoms),
-        phrase(statement(Stat), Atoms),
-        respond(Stat).
-      
-readQuery :-
-        write('Query:'),
-        read_line(X),
-        atomize(X, Atoms),
-        phrase(query(Query), Atoms),
-        respond(Query).
-      
+    
+/* Respond to statements and queries by retrieveing facts 
+ * asserted in previous statements.
+ */
 respond(Query) :-
         Query = (q, _),
         findElement(n, Query, Noun),
         findElement(v, Query, Verb),
-        retrieve(Noun, Verb).
-             
+        retrieve(Noun, Verb).          
 respond(Stat) :-
         Stat = (s, _),
         findElement(ad, Stat, Adjective),
         findElement(v, Stat, Verb),
         findElement(n, Stat, Noun),
         assign_adj(Noun, Verb, Adjective).
-
 respond(Stat) ;-
         Stat = (s, _),
         findElement(np, Stat, VerbPhrase),
@@ -81,7 +79,6 @@ respond(Stat) ;-
         findElement(q, VerbPhrase, Quantity),
         findElement(n, VerbPhrase, TargetNoun),
         assign_quant(Noun, Verb, Quantity, TargetNoun).
-        
 respond(Stat) :-
         Stat = (s, _),
         findElement(vp, Stat, VerbPhrase),
@@ -90,6 +87,7 @@ respond(Stat) :-
         findElement(n, VerbPhrase, TargetNoun),
         assign_noun(Noun, Verb, TargetNoun).
         
+/* Retrive facts from the database and present them. */
 retrieve(Noun, Verb) :-
         getVerb(be, Verb),
         make(Noun, Adjective),
@@ -103,6 +101,7 @@ retrieve(Noun, Verb) :-
         give(Noun, Adjective),
         format("~w ~w ~w ~n", [Noun, Verb, Adjective]).
 
+/* Assert facts depending on the type of statement. */
 assign_adj(Noun, Verb, Adjective) :-
         getVerb(be, Verb),
         assert(make(Noun, Adjective)),
@@ -127,6 +126,7 @@ respond(Greet) :-
         X \= Inter,
         format('~w ~n', [X]).
 
+/* Read a sentece of input */
 readSentence :-
         write('Input:'),
         read_line(X),
@@ -134,12 +134,14 @@ readSentence :-
         phrase(sentence(Tree), Atoms),    
         respond(Tree).
 
+/* Main function */
 main :-
        (readSentence,
        main); 
        (format('no clue man.~n', []),
        main).
         
+/* Searches for an element in the parse tree */
 findElement(El, Tree, Out) :-
        findEl(El, [Tree], Out).
         
@@ -152,6 +154,7 @@ findEl(El, [(_, L)|T], Out) :-
        findEl(El, L, Out);
        findEl(El, T, Out).
 
+% We found a leaf
 findEl(_, [], _) :-
        fail.
         

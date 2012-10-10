@@ -1,11 +1,12 @@
-reverse(X, Out) :-
-        reverse(X, [], Out).
-reverse([X|Xt], Acc, Out) :-
-        reverse(Xt, [X|Acc], Out).
-reverse([], Acc, Out) :-
-        Out = Acc.
+/*
+* Author: Jakob Stengård
+*/
         
-%Interface
+/* Splits words from string into a list of atoms.  
+*   Splitting is done on whitespace, dots and questionmakrs are skipped.
+*   In case the string ends with a questionmark, that questionmark
+*  is appended to the end of the list, so it can be used to indicate questions.
+*/                           
 atomize(X, Out) :-
         atomize(X, [], [], Out), !.
 %Return result
@@ -47,3 +48,10 @@ is_dot(X) :-
         X is 46.
 is_question(X) :-
         X is 63.
+
+reverse(X, Out) :-
+        reverse(X, [], Out).
+reverse([X|Xt], Acc, Out) :-
+        reverse(Xt, [X|Acc], Out).
+reverse([], Acc, Out) :-
+        Out = Acc.
